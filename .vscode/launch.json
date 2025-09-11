@@ -1,10 +1,10 @@
 {
     "configurations": [
         {
-            "name": "Containers: .NET Launch",
+            "name": "Containers: Catalog API",
             "type": "docker",
             "request": "launch",
-            "preLaunchTask": "docker-run: debug",
+            "preLaunchTask": "docker-run-catalog-api: debug",
             "netCore": {
                 "appProject": "${workspaceFolder}/src/Services/Catalog/Catalog.API/Catalog.API.csproj"
             }

@@ -3,12 +3,12 @@
 	"tasks": [
 		{
 			"type": "docker-build",
-			"label": "docker-build: debug",
+			"label": "docker-build-catalog-api: debug",
 			"dependsOn": [
 				"build"
 			],
 			"dockerBuild": {
-				"tag": "eshopmicroservices:dev",
+				"tag": "catalog_api-container:debug",
 				"target": "base",
 				"dockerfile": "${workspaceFolder}/src/Services/Catalog/Catalog.API/Dockerfile",
 				"context": "${workspaceFolder}",
@@ -20,17 +20,17 @@
 		},
 		{
 			"type": "docker-build",
-			"label": "docker-build: release",
+			"label": "docker-build-catalog-api: release",
 			"dependsOn": [
 				"build"
 			],
 			"dockerBuild": {
-				"tag": "eshopmicroservices:latest",
+				"tag": "catalog_api-container:release",
 				"dockerfile": "${workspaceFolder}/src/Services/Catalog/Catalog.API/Dockerfile",
 				"context": "${workspaceFolder}",
 				"platform": {
 					"os": "linux",
-					"architecture": "amd64"
+					"architecture": "arm64"
 				},
 				"pull": true
 			},
@@ -40,9 +40,9 @@
 		},
 		{
 			"type": "docker-run",
-			"label": "docker-run: debug",
+			"label": "docker-run-catalog-api: debug",
 			"dependsOn": [
-				"docker-build: debug"
+				"docker-build-catalog-api: debug"
 			],
 			"dockerRun": {},
 			"netCore": {
@@ -52,9 +52,9 @@
 		},
 		{
 			"type": "docker-run",
-			"label": "docker-run: release",
+			"label": "docker-run-catalog-api: release",
 			"dependsOn": [
-				"docker-build: release"
+				"docker-build-catalog-api: release"
 			],
 			"dockerRun": {},
 			"netCore": {
