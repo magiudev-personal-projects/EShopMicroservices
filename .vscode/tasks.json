@@ -46,6 +46,12 @@
 			],
 			"dockerRun": {
 				"containerName": "catalog_api-container",
+				"ports": [
+					{
+						"containerPort": 8080,
+						"hostPort": 6001
+					}
+				],
 			},
 			"netCore": {
 				"appProject": "${workspaceFolder}/src/Services/Catalog/Catalog.API/Catalog.API.csproj",
