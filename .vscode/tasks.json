@@ -46,8 +46,22 @@
 					{
 						"containerPort": 8080,
 						"hostPort": 6001
+					},
+					{
+						"containerPort": 8081,
+						"hostPort": 6062
 					}
 				],
+				"env": {
+					"ASPNETCORE_Kestrel__Certificates__Default__Path": "/https/aspnetapp.pfx",
+					"ASPNETCORE_Kestrel__Certificates__Default__Password": "MySecretPassword"
+				},
+				"volumes": [
+					{
+						"localPath": "${workspaceFolder}/https",
+						"containerPath": "/https"
+					}
+				]
 			},
 			"netCore": {
 				"appProject": "${workspaceFolder}/src/Services/Catalog/Catalog.API/Catalog.API.csproj",
@@ -60,7 +74,28 @@
 			"dependsOn": [
 				"docker-build-catalog-api: release"
 			],
-			"dockerRun": {},
+			"dockerRun": {
+				"ports": [
+					{
+						"containerPort": 8080,
+						"hostPort": 6001
+					},
+					{
+						"containerPort": 8081,
+						"hostPort": 6062
+					}
+				],
+				"env": {
+					"ASPNETCORE_Kestrel__Certificates__Default__Path": "/https/aspnetapp.pfx",
+					"ASPNETCORE_Kestrel__Certificates__Default__Password": "MySecretPassword"
+				},
+				"volumes": [
+					{
+						"localPath": "${workspaceFolder}/https",
+						"containerPath": "/https"
+					}
+				]
+			},
 			"netCore": {
 				"appProject": "${workspaceFolder}/src/Services/Catalog/Catalog.API/Catalog.API.csproj"
 			}
