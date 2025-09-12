@@ -28,10 +28,6 @@
 				"tag": "catalog_api-image:release",
 				"dockerfile": "${workspaceFolder}/src/Services/Catalog/Catalog.API/Dockerfile",
 				"context": "${workspaceFolder}",
-				"platform": {
-					"os": "linux",
-					"architecture": "arm64"
-				},
 				"pull": true
 			},
 			"netCore": {
