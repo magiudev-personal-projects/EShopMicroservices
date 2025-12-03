@@ -2,7 +2,8 @@
 
 services:
   catalogapi:
-    image: catalogapi
+    image: catalog-api
+    platform: linux/arm64
     build:
       context: .
       dockerfile: src/Services/Catalog/Catalog.API/Dockerfile

@@ -2,16 +2,22 @@
 
 services:
   catalogapi:
-    image: catalogapi
+    image: catalog-api
+    platform: linux/arm64
     build:
       context: .
       dockerfile: src/Services/Catalog/Catalog.API/Dockerfile
       args:
         - configuration=Debug
     ports:
-      - 8080:8080
-      - 8081:8081
+      - 6001:8080
+      - 6062:8081
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_HTTP_PORTS=8080
+      - ASPNETCORE_HTTPS_PORTS=8081
     volumes:
       - ~/.vsdbg:/remote_debugger:rw
+      # - ${APPDATA}/Microsoft/UserSecrets:/home/app/.microsoft/usersecrets:ro
+      # - ${APPDATA}/ASP.NET/Https:/home/app/.aspnet/https:ro # for windows
+      - ~/.aspnet/dev-certs/https:/home/app/.aspnet/https:ro

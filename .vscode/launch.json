@@ -10,7 +10,7 @@
             }
         },
         {
-            "name": ".NET Core Launch (web)",
+            "name": "Catalog API",
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build",
@@ -34,14 +34,5 @@
             "type": "coreclr",
             "request": "attach"
         },
-        {
-            "name": "Containers: .NET Launch",
-            "type": "docker",
-            "request": "launch",
-            "preLaunchTask": "docker-run: debug",
-            "netCore": {
-                "appProject": "${workspaceFolder}/src/Services/Catalog/Catalog.API/Catalog.API.csproj"
-            }
-        }
     ]
 }
