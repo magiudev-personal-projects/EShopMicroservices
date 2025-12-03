@@ -13,11 +13,11 @@ public record CreateProductRequest(
 public record CreateProductResponse(Guid Id);
 
 public record CreateProductCommand(
-    string name,
-    List<string> categories,
-    string descriton,
-    string imageFile,
-    decimal price
+    string Name,
+    List<string> Categories,
+    string Description,
+    string ImageFile,
+    decimal Price
 ) : ICommand<CreateProductResult>;
 
 public record CreateProductResult(Guid Id);

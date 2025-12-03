@@ -1,11 +1,22 @@
-using BuildingBlocks.CQRS;
-
 namespace Catalog.API.Features.CreateProduct;
 
-internal class CreateProductCommandHandler : ICommandHandler<CreateProductCommand, CreateProductResult>
+internal class CreateProductCommandHandler(IDocumentSession session) : ICommandHandler<CreateProductCommand, CreateProductResult>
 {
-    public Task<CreateProductResult> Handle(CreateProductCommand command, CancellationToken cancellationToken)
+    public async Task<CreateProductResult> Handle(CreateProductCommand command, CancellationToken cancellationToken)
     {
-        throw new NotImplementedException();
+
+        var product = new Product
+        {
+            Name = command.Name,
+            Categories = command.Categories,
+            Description = command.Description,
+            ImageFile = command.ImageFile,
+            Price = command.Price
+        };
+
+        session.Store(product);
+        await session.SaveChangesAsync(cancellationToken);
+
+        return new CreateProductResult(product.Id);
     }
 }

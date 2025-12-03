@@ -4,6 +4,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{5854FF58-B8C5-05C6-5BF2-ACE42193F22B}"
+	ProjectSection(SolutionItems) = preProject
+		GobalUsing.cs = GobalUsing.cs
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Catalog", "Catalog", "{944ACC7E-4FFC-A2A2-09E1-98A62C66F8DB}"
 EndProject
