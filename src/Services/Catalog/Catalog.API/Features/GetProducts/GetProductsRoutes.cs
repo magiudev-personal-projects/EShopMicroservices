@@ -4,7 +4,7 @@ namespace Catalog.API.Features.GetProducts;
 
 public static class GetProducts
 {
-    public static void UseGetProductsRoutes(this IEndpointRouteBuilder app)
+    public static void UseGetProductsRoute(this IEndpointRouteBuilder app)
     {
         app.MapGet("/products", async (ISender sender) =>
         {

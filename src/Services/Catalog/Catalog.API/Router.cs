@@ -7,7 +7,7 @@ public static class Router
 {
     public static void AddRoutes(this IEndpointRouteBuilder app)
     {
-        app.UseCreateProductRoutes();
-        app.UseGetProductsRoutes();
+        app.UseCreateProductRoute();
+        app.UseGetProductsRoute();
     }
 }
