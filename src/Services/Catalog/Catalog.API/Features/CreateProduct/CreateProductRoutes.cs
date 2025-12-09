@@ -2,9 +2,9 @@ using MediatR;
 
 namespace Catalog.API.Features.CreateProduct;
 
-public static class CreateProductEndpoint
+public static class CreateProductRoutes
 {
-    public static void UseCreateProductEndpoints(this IEndpointRouteBuilder app)
+    public static void UseCreateProductRoutes(this IEndpointRouteBuilder app)
     {
         app.MapPost("/products", async (CreateProductRequest request, ISender sender) =>
         {

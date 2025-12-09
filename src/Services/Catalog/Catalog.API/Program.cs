@@ -1,5 +1,5 @@
 
-using Catalog.API.Features.CreateProduct;
+using Catalog.API;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,6 +15,6 @@ builder.Services.AddMarten(options =>
 
 var app = builder.Build();
 
-app.UseCreateProductEndpoints();
+app.AddRoutes();
 
 app.Run();
