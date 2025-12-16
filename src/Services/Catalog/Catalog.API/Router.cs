@@ -9,5 +9,6 @@ public static class Router
     {
         app.UseCreateProductRoute();
         app.UseGetProductsRoute();
+        app.UseGetProductByIdRoute();
     }
 }
