@@ -12,11 +12,6 @@ public static class GetProducts
 
             var result = await sender.Send(query);
 
-            if (result == null)
-            {
-                return Results.NotFound();
-            }
-
             var response = GetProductsMaps.FromResultToResponse(result);
 
             return Results.Ok(response);

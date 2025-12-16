@@ -8,12 +8,6 @@ public class GetProductsQueryHandler(IDocumentSession session, ILogger<GetProduc
     {
         logger.LogInformation("GetProductsQueryHandler.Handle called with {@query}", query);
         var products = await session.Query<Product>().ToListAsync(cancellationToken);
-
-        if (!products.Any())
-        {
-            return null;
-        }
-
         return new GetProductsResult(products);
     }
 }
