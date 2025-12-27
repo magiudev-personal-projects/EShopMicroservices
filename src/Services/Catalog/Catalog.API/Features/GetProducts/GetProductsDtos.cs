@@ -5,4 +5,4 @@ public record GetProductsResult(IReadOnlyList<Product> Products);
 
 public record GetProductsResponse(IEnumerable<Product> Products);
 
-public record GetProductsQuery : IQuery<GetProductsResult>;
+public record GetProductsQuery: IQuery<GetProductsResult>;
