@@ -9,7 +9,7 @@ public class GetProductsByCategoryHandler(IDocumentSession session, ILogger<GetP
         var products = await session
             .Query<Product>()
             .Where(product => product.Categories.Contains(query.Category))
-            .ToListAsync();
+            .ToListAsync(cancellationToken);
         return new GetProductsByCategoryResult(products);
     }
 }
