@@ -3,6 +3,7 @@ using GetProductByIdRouter = Catalog.API.Features.GetProductById.Router;
 using GetProductsRouter = Catalog.API.Features.GetProducts.Router;
 using GetProductsByCategoryRouter = Catalog.API.Features.GetProductsByCategory.Router;
 using UpdateProductRouter = Catalog.API.Features.UpdateProduct.Router;
+using DeleteProductRouter = Catalog.API.Features.DeleteProduct.Router;
 
 namespace Catalog.API;
 
@@ -15,5 +16,6 @@ public static class Router
         GetProductsRouter.AddRoute(app);
         GetProductsByCategoryRouter.AddRoute(app);
         UpdateProductRouter.AddRoute(app);
+        DeleteProductRouter.AddRoute(app);
     }
 }
