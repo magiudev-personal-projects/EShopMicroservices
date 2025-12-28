@@ -1,5 +1,7 @@
 
 
+using Catalog.API.Exceptions;
+
 namespace Catalog.API.Features.GetProductById;
 
 public class GetProductByIdQueryHandler(IDocumentSession session, ILogger<GetProductByIdQueryHandler> logger) : IQueryHandler<Query, Result>
@@ -11,9 +13,7 @@ public class GetProductByIdQueryHandler(IDocumentSession session, ILogger<GetPro
         var product = await session.LoadAsync<Product>(query.Id, cancellationToken);
 
         if (product == null)
-        {
-            return null;
-        }
+            throw new ProductNotFoundException(query.Id);
 
         return new Result(product);
     }
