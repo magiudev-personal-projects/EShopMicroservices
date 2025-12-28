@@ -3,7 +3,7 @@ using Catalog.API.Exceptions;
 
 namespace Catalog.API.Features.UpdateProduct;
 
-public class UpdateProductHanlder(IDocumentSession session, ILogger<UpdateProductHanlder> logger) : ICommandHandler<Command, Result>
+public class Handler(IDocumentSession session, ILogger<Handler> logger) : ICommandHandler<Command, Result>
 {
     public async Task<Result> Handle(Command command, CancellationToken cancellationToken)
     {

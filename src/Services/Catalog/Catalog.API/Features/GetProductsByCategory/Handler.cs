@@ -1,7 +1,7 @@
 
 namespace Catalog.API.Features.GetProductsByCategory;
 
-public class GetProductsByCategoryHandler(IDocumentSession session, ILogger<GetProductsByCategoryHandler> logger): IQueryHandler<Query, Result>
+public class Handler(IDocumentSession session, ILogger<Handler> logger): IQueryHandler<Query, Result>
 {
     public async Task<Result> Handle(Query query, CancellationToken cancellationToken)
     {
