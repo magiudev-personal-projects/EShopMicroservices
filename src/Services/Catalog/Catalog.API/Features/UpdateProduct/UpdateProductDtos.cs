@@ -1,6 +1,6 @@
 namespace Catalog.API.Features.UpdateProduct;
 
-public record UpdateProductRequest(
+public record Request(
     Guid Id,
     string Name,
     List<string> Categories,
@@ -9,14 +9,14 @@ public record UpdateProductRequest(
     decimal Price
 );
 
-public record UpdateProductCommand(
+public record Command(
     Guid Id,
     string Name,
     List<string> Categories,
     string Description,
     string ImageFile,
     decimal Price
-): ICommand<UpdateProductResult>;
+): ICommand<Result>;
 
-public record UpdateProductResult(bool updated);
-public record UpdateProductResponse(bool updated);
+public record Result(bool updated);
+public record Response(bool updated);

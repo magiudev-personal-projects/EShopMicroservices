@@ -6,7 +6,7 @@ public static class GetProducts
     {
         app.MapGet("/products", async (ISender sender) =>
         {
-            var query = new GetProductsQuery();
+            var query = new Query();
 
             var result = await sender.Send(query);
 
@@ -15,7 +15,7 @@ public static class GetProducts
             return Results.Ok(response);
         })
         .WithName("GetProducts")
-        .Produces<GetProductsResponse>(StatusCodes.Status200OK)
+        .Produces<Response>(StatusCodes.Status200OK)
         .ProducesProblem(StatusCodes.Status404NotFound)
         .WithSummary("Get all products")
         .WithDescription("Get all products");

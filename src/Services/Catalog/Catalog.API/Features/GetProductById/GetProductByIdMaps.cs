@@ -4,8 +4,8 @@ namespace Catalog.API.Features.GetProducts;
 
 public class GetProductByIdMaps
 {
-    public static GetProductByIdResponse FromResultToResponse(GetProductByIdResult result)
+    public static Features.GetProductById.Response FromResultToResponse(Features.GetProductById.Result result)
     {
-        return new GetProductByIdResponse(result.Product);
+        return new Features.GetProductById.Response(result.Product);
     }
 }

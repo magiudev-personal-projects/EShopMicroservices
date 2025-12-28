@@ -1,8 +1,8 @@
 
 namespace Catalog.API.Features.GetProducts;
 
-public record GetProductsResult(IReadOnlyList<Product> Products);
+public record Result(IReadOnlyList<Product> Products);
 
-public record GetProductsResponse(IEnumerable<Product> Products);
+public record Response(IEnumerable<Product> Products);
 
-public record GetProductsQuery: IQuery<GetProductsResult>;
+public record Query: IQuery<Result>;

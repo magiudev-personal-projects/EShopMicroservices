@@ -2,9 +2,9 @@ namespace Catalog.API.Features.UpdateProduct;
 
 public static class UpdateProductMaps
 {
-    public static UpdateProductCommand FromRequestToCommand(UpdateProductRequest request)
+    public static Command FromRequestToCommand(Request request)
     {
-        return new UpdateProductCommand(
+        return new Command(
             request.Id,
             request.Name, 
             request.Categories, 
@@ -14,7 +14,7 @@ public static class UpdateProductMaps
         );
     }
 
-    public static void UpdateEntityFromCommand(UpdateProductCommand command, ref Product product)
+    public static void UpdateEntityFromCommand(Command command, ref Product product)
     {
         product.Name = command.Name;
         product.Categories = command.Categories;
@@ -23,8 +23,8 @@ public static class UpdateProductMaps
         product.Price = command.Price;
     }
 
-    public static UpdateProductResponse FromResultToResponse(UpdateProductResult result)
+    public static Response FromResultToResponse(Result result)
     {
-        return new UpdateProductResponse(result.updated);
+        return new Response(result.updated);
     }
 }

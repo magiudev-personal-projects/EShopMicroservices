@@ -2,9 +2,9 @@
 
 namespace Catalog.API.Features.GetProductById;
 
-public class GetProductByIdQueryHandler(IDocumentSession session, ILogger<GetProductByIdQueryHandler> logger) : IQueryHandler<GetProductByIdQuery, GetProductByIdResult>
+public class GetProductByIdQueryHandler(IDocumentSession session, ILogger<GetProductByIdQueryHandler> logger) : IQueryHandler<Query, Result>
 {
-    public async Task<GetProductByIdResult> Handle(GetProductByIdQuery query, CancellationToken cancellationToken)
+    public async Task<Result> Handle(Query query, CancellationToken cancellationToken)
     {
         logger.LogInformation("GetProductByIdQueryHandler.Handle called with {@query}", query);
 
@@ -15,6 +15,6 @@ public class GetProductByIdQueryHandler(IDocumentSession session, ILogger<GetPro
             return null;
         }
 
-        return new GetProductByIdResult(product);
+        return new Result(product);
     }
 }

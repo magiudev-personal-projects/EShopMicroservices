@@ -1,7 +1,7 @@
 namespace Catalog.API.Features.GetProductsByCategory;
 
-public record GetProductsByCategoryResult(IEnumerable<Product> products);
+public record Result(IEnumerable<Product> products);
 
-public record GetProductsByCategoryResponse(IEnumerable<Product> products);
+public record Response(IEnumerable<Product> products);
 
-public record GetProductsByCategoryQuery(string Category) : IQuery<GetProductsByCategoryResult>;
+public record Query(string Category) : IQuery<Result>;

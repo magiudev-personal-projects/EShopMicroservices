@@ -1,6 +1,6 @@
 namespace Catalog.API.Features.CreateProduct;
 
-public record CreateProductRequest(
+public record Request(
      string Name,
      List<string> Categories,
      string Description,
@@ -8,14 +8,14 @@ public record CreateProductRequest(
      decimal Price
 );
 
-public record CreateProductResponse(Guid Id);
+public record Response(Guid Id);
 
-public record CreateProductCommand(
+public record Command(
     string Name,
     List<string> Categories,
     string Description,
     string ImageFile,
     decimal Price
-) : ICommand<CreateProductResult>;
+) : ICommand<Result>;
 
-public record CreateProductResult(Guid Id);
+public record Result(Guid Id);

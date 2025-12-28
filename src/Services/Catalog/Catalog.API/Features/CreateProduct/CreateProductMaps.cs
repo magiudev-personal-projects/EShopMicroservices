@@ -3,12 +3,12 @@ namespace Catalog.API.Features.CreateProduct;
 
 public static class CreateProductMaps
 {
-    public static CreateProductCommand FromRequestToCommand(CreateProductRequest request)
+    public static Command FromRequestToCommand(Request request)
     {
-        return new CreateProductCommand(request.Name, request.Categories, request.Description, request.ImageFile, request.Price);
+        return new Command(request.Name, request.Categories, request.Description, request.ImageFile, request.Price);
     }
 
-    public static Product FromCommandToEntity(CreateProductCommand command)
+    public static Product FromCommandToEntity(Command command)
     {
         return new Product
         {
@@ -20,8 +20,8 @@ public static class CreateProductMaps
         };
     }
 
-    public static CreateProductResponse FromResultToResponse(CreateProductResult result)
+    public static Response FromResultToResponse(Result result)
     {
-        return new CreateProductResponse(result.Id);
+        return new Response(result.Id);
     }
 }

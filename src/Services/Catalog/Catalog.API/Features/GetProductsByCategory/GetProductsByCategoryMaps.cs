@@ -2,8 +2,8 @@ namespace Catalog.API.Features.GetProductsByCategory;
 
 public static class GetProductsByCategoryMaps
 {
-    public static GetProductsByCategoryResponse FromResultToResponse(GetProductsByCategoryResult result)
+    public static Response FromResultToResponse(Result result)
     {
-        return new GetProductsByCategoryResponse(result.products);
+        return new Response(result.products);
     }
 }

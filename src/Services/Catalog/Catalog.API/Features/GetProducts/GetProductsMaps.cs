@@ -2,8 +2,8 @@ namespace Catalog.API.Features.GetProducts;
 
 public class GetProductsMaps
 {
-    public static GetProductsResponse FromResultToResponse(GetProductsResult result)
+    public static Response FromResultToResponse(Result result)
     {
-        return new GetProductsResponse(result.Products.ToList());
+        return new Response(result.Products.ToList());
     }
 }

@@ -1,8 +1,8 @@
 
 namespace Catalog.API.Features.GetProductById;
 
-public record GetProductByIdResult(Product Product);
+public record Result(Product Product);
 
-public record GetProductByIdResponse(Product Product);
+public record Response(Product Product);
 
-public record GetProductByIdQuery(Guid Id) : IQuery<GetProductByIdResult>;
+public record Query(Guid Id) : IQuery<Result>;

@@ -3,9 +3,9 @@ using Catalog.API.Exceptions;
 
 namespace Catalog.API.Features.UpdateProduct;
 
-public class UpdateProductHanlder(IDocumentSession session, ILogger<UpdateProductHanlder> logger) : ICommandHandler<UpdateProductCommand, UpdateProductResult>
+public class UpdateProductHanlder(IDocumentSession session, ILogger<UpdateProductHanlder> logger) : ICommandHandler<Command, Result>
 {
-    public async Task<UpdateProductResult> Handle(UpdateProductCommand command, CancellationToken cancellationToken)
+    public async Task<Result> Handle(Command command, CancellationToken cancellationToken)
     {
         logger.LogInformation("UpdateProductHanlder.Handle called with {@command}", command);
 
@@ -17,6 +17,6 @@ public class UpdateProductHanlder(IDocumentSession session, ILogger<UpdateProduc
         UpdateProductMaps.UpdateEntityFromCommand(command, ref product);
         session.Update(product);
         await session.SaveChangesAsync(cancellationToken);
-        return new UpdateProductResult(true);
+        return new Result(true);
     }
 }

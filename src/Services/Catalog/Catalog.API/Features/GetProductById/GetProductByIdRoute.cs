@@ -9,7 +9,7 @@ public static class GetProductById
     {
         app.MapGet("/products/{Id}", async ([FromRoute] Guid Id, ISender sender) =>
         {
-            var query = new GetProductByIdQuery(Id);
+            var query = new Features.GetProductById.Query(Id);
 
             var result = await sender.Send(query);
 
@@ -23,7 +23,7 @@ public static class GetProductById
             return Results.Ok(response);
         })
         .WithName("GetProductById")
-        .Produces<GetProductsResponse>(StatusCodes.Status200OK)
+        .Produces<Response>(StatusCodes.Status200OK)
         .ProducesProblem(StatusCodes.Status404NotFound)
         .WithSummary("Get product by id")
         .WithDescription("Get product by id");
