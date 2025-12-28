@@ -10,7 +10,7 @@ public static class GetProducts
 
             var result = await sender.Send(query);
 
-            var response = GetProductsMaps.FromResultToResponse(result);
+            var response = Maps.FromResultToResponse(result);
 
             return Results.Ok(response);
         })

@@ -6,11 +6,11 @@ public static class CreateProductRoute
     {
         app.MapPost("/products", async (Request request, ISender sender) =>
         {
-            var command = CreateProductMaps.FromRequestToCommand(request);
+            var command = Maps.FromRequestToCommand(request);
 
             var result = await sender.Send(command);
 
-            var response = CreateProductMaps.FromResultToResponse(result);
+            var response = Maps.FromResultToResponse(result);
 
             return Results.Created($"/product/{response.Id}", response);
         })

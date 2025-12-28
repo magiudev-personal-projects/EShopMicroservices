@@ -14,7 +14,7 @@ public class Handler(IDocumentSession session, ILogger<Handler> logger) : IComma
         if(product == null)
             throw new ProductNotFoundException(command.Id);
 
-        UpdateProductMaps.UpdateEntityFromCommand(command, ref product);
+        Maps.UpdateEntityFromCommand(command, ref product);
         session.Update(product);
         await session.SaveChangesAsync(cancellationToken);
         return new Result(true);

@@ -1,6 +1,6 @@
 namespace Catalog.API.Features.UpdateProduct;
 
-public static class UpdateProductMaps
+public static class Maps
 {
     public static Command FromRequestToCommand(Request request)
     {

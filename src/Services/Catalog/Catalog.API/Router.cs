@@ -1,5 +1,6 @@
 using Catalog.API.Features.CreateProduct;
 using Catalog.API.Features.GetProducts;
+using Catalog.API.Features.GetProductById;
 using Catalog.API.Features.GetProductsByCategory;
 using Catalog.API.Features.UpdateProduct;
 

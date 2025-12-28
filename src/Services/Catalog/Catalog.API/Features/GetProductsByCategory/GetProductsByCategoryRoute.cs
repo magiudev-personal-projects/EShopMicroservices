@@ -10,7 +10,7 @@ public static class GetProductsByCategoryRoute
         {            
             var query = new Query(category);
             var result = await sender.Send(query);
-            var reponse = GetProductsByCategoryMaps.FromResultToResponse(result);
+            var reponse = Maps.FromResultToResponse(result);
             return reponse;
         })
             .WithName("Get Products by Category")

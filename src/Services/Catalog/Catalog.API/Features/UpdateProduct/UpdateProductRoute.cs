@@ -8,9 +8,9 @@ public static class UpdateProductRoute
     {
         app.MapPut("/Products", async ([FromBody] Request request, ISender sender) =>
         {
-           var command = UpdateProductMaps.FromRequestToCommand(request);
+           var command = Maps.FromRequestToCommand(request);
            var result = await sender.Send(command);
-           var response = UpdateProductMaps.FromResultToResponse(result);
+           var response = Maps.FromResultToResponse(result);
            return response;
         })
             .WithName("Update Product")

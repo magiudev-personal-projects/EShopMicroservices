@@ -1,7 +1,6 @@
-using Catalog.API.Features.GetProductById;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Catalog.API.Features.GetProducts;
+namespace Catalog.API.Features.GetProductById;
 
 public static class GetProductById
 {
@@ -9,7 +8,7 @@ public static class GetProductById
     {
         app.MapGet("/products/{Id}", async ([FromRoute] Guid Id, ISender sender) =>
         {
-            var query = new Features.GetProductById.Query(Id);
+            var query = new Query(Id);
 
             var result = await sender.Send(query);
 
@@ -18,7 +17,7 @@ public static class GetProductById
                 return Results.NotFound();
             }
 
-            var response = GetProductByIdMaps.FromResultToResponse(result);
+            var response = Maps.FromResultToResponse(result);
 
             return Results.Ok(response);
         })
