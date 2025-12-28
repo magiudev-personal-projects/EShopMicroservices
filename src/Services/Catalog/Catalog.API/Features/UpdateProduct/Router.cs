@@ -2,9 +2,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Catalog.API.Features.UpdateProduct;
 
-public static class UpdateProductRoute
+public static class Router
 {
-    public static void UseUpdateProductRoute(this IEndpointRouteBuilder app)
+    public static void AddRoute(this IEndpointRouteBuilder app)
     {
         app.MapPut("/Products", async ([FromBody] Request request, ISender sender) =>
         {

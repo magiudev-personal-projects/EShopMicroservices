@@ -1,8 +1,8 @@
 namespace Catalog.API.Features.CreateProduct;
 
-public static class CreateProductRoute
+public static class Router
 {
-    public static void UseCreateProductRoute(this IEndpointRouteBuilder app)
+    public static void AddRoute(this IEndpointRouteBuilder app)
     {
         app.MapPost("/products", async (Request request, ISender sender) =>
         {

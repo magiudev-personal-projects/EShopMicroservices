@@ -2,9 +2,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Catalog.API.Features.GetProductsByCategory;
 
-public static class GetProductsByCategoryRoute
+public static class Router
 {
-    public static void UseGetProductsByCategoryRoute(this IEndpointRouteBuilder app)
+    public static void AddRoute(this IEndpointRouteBuilder app)
     {
         app.MapGet("/products/categories/{category}", async ([FromRoute] string category, ISender sender) =>
         {            
