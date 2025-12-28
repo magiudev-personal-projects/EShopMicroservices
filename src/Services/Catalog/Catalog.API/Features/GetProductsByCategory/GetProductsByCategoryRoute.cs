@@ -4,7 +4,7 @@ namespace Catalog.API.Features.GetProductsByCategory;
 
 public static class GetProductsByCategoryRoute
 {
-    public static async void UseGetProductsByCategoryRoute(this IEndpointRouteBuilder app)
+    public static void UseGetProductsByCategoryRoute(this IEndpointRouteBuilder app)
     {
         app.MapGet("/products/categories/{category}", async ([FromRoute] string category, ISender sender) =>
         {            
