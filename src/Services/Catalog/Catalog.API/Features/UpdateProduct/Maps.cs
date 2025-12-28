@@ -2,10 +2,10 @@ namespace Catalog.API.Features.UpdateProduct;
 
 public static class Maps
 {
-    public static Command FromRequestToCommand(Request request)
+    public static Command FromRequestToCommand(Guid Id, Request request)
     {
         return new Command(
-            request.Id,
+            Id,
             request.Name, 
             request.Categories, 
             request.Description, 

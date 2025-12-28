@@ -1,7 +1,6 @@
 namespace Catalog.API.Features.UpdateProduct;
 
 public record Request(
-    Guid Id,
     string Name,
     List<string> Categories,
     string Description,

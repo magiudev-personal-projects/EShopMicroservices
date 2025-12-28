@@ -6,9 +6,9 @@ public static class Router
 {
     public static void AddRoute(this IEndpointRouteBuilder app)
     {
-        app.MapPut("/Products", async ([FromBody] Request request, ISender sender) =>
+        app.MapPut("/Products/{Id}", async ([FromBody] Request request, [FromRoute] Guid Id, ISender sender) =>
         {
-           var command = Maps.FromRequestToCommand(request);
+           var command = Maps.FromRequestToCommand(Id, request);
            var result = await sender.Send(command);
            var response = Maps.FromResultToResponse(result);
            return response;
