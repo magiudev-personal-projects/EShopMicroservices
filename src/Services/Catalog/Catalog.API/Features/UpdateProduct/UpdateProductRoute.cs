@@ -12,6 +12,10 @@ public static class UpdateProductRoute
            var result = await sender.Send(command);
            var response = UpdateProductMaps.FromResultToResponse(result);
            return response;
-        });
+        })
+            .WithName("Update Product")
+            .Produces<Result>(StatusCodes.Status200OK)
+            .ProducesProblem(StatusCodes.Status400BadRequest)
+            .WithDescription("Update Product");
     }
 }
