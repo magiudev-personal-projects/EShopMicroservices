@@ -12,11 +12,6 @@ public static class Router
 
             var result = await sender.Send(query);
 
-            if (result == null)
-            {
-                return Results.NotFound();
-            }
-
             var response = Maps.FromResultToResponse(result);
 
             return Results.Ok(response);
