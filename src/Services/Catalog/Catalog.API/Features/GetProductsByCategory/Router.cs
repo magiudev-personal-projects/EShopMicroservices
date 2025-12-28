@@ -10,12 +10,14 @@ public static class Router
         {            
             var query = new Query(category);
             var result = await sender.Send(query);
-            var reponse = Maps.FromResultToResponse(result);
-            return reponse;
+            var response = Maps.FromResultToResponse(result);
+            return Results.Ok(response);
+
         })
-            .WithName("Get Products by Category")
+            .WithName("GetProductsbyCategory")
             .Produces<Result>(StatusCodes.Status200OK)
             .ProducesProblem(StatusCodes.Status400BadRequest)
-            .WithDescription("Get Products by Category");
+            .WithSummary("Get Product By Category")
+            .WithDescription("Get Product By Category");
     }
 }

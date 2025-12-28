@@ -18,6 +18,7 @@ public static class Router
         })
         .WithName("GetProductById")
         .Produces<Response>(StatusCodes.Status200OK)
+        .ProducesProblem(StatusCodes.Status400BadRequest)
         .ProducesProblem(StatusCodes.Status404NotFound)
         .WithSummary("Get product by id")
         .WithDescription("Get product by id");

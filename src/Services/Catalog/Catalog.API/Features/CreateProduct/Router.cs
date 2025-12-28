@@ -12,7 +12,7 @@ public static class Router
 
             var response = Maps.FromResultToResponse(result);
 
-            return Results.Created($"/product/{response.Id}", response);
+            return Results.CreatedAtRoute("GetProductById", new { response.Id }, response);
         })
         .WithName("CreateProduct")
         .Produces<Response>(StatusCodes.Status201Created)
