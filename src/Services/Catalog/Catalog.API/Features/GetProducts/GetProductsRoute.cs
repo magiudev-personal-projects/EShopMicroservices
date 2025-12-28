@@ -1,5 +1,3 @@
-using MediatR;
-
 namespace Catalog.API.Features.GetProducts;
 
 public static class GetProducts

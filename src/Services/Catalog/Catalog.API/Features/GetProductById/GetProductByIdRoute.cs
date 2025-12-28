@@ -1,5 +1,4 @@
 using Catalog.API.Features.GetProductById;
-using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Catalog.API.Features.GetProducts;

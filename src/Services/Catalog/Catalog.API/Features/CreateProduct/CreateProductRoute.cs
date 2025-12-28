@@ -1,5 +1,3 @@
-using MediatR;
-
 namespace Catalog.API.Features.CreateProduct;
 
 public static class CreateProductRoute
