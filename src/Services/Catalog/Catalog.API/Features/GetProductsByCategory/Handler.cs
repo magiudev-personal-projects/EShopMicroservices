@@ -5,7 +5,7 @@ public class Handler(IDocumentSession session, ILogger<Handler> logger): IQueryH
 {
     public async Task<Result> Handle(Query query, CancellationToken cancellationToken)
     {
-        logger.LogInformation("GetProductsByCategoryHandler.Handle called with {@query}", query);
+        logger.LogInformation("Query: {query}", query);
         var products = await session
             .Query<Product>()
             .Where(product => product.Categories.Contains(query.Category))

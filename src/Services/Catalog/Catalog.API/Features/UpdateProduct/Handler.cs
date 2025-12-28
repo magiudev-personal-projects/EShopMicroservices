@@ -7,7 +7,7 @@ public class Handler(IDocumentSession session, ILogger<Handler> logger) : IComma
 {
     public async Task<Result> Handle(Command command, CancellationToken cancellationToken)
     {
-        logger.LogInformation("UpdateProductHanlder.Handle called with {@command}", command);
+        logger.LogInformation("Command: {command}", command);
 
         var product = await session.LoadAsync<Product>(command.Id, cancellationToken);
 

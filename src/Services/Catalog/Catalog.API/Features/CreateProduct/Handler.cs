@@ -4,7 +4,7 @@ internal class Handler(IDocumentSession session, ILogger<Handler> logger) : ICom
 {
     public async Task<Result> Handle(Command command, CancellationToken cancellationToken)
     {
-        logger.LogInformation("CreateProductCommandHandler.Handle called with {@command}", command);
+        logger.LogInformation("Command: {command}", command);
         var product = Maps.FromCommandToEntity(command);
         session.Store(product);
         await session.SaveChangesAsync(cancellationToken);
