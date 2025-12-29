@@ -4,7 +4,6 @@ namespace Catalog.API.Features.DeleteProduct;
 
 public static class Router
 {
-    // TODO: move logs to routes
     public static void AddRoute(this IEndpointRouteBuilder app)
     {
         app.MapDelete("/products/{Id}", async ([FromRoute] Guid Id, ISender sender) =>
