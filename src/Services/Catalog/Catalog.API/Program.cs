@@ -17,8 +17,14 @@ builder.Services.AddMarten(options =>
     options.Connection(builder.Configuration.GetConnectionString("Database")!);
 }).UseLightweightSessions();
 
+builder.Services.AddExceptionHandler<ExceptionHandler>();
+
+builder.Services.AddProblemDetails();
+
 var app = builder.Build();
 
 app.AddRoutes();
+
+app.UseExceptionHandler();
 
 app.Run();
