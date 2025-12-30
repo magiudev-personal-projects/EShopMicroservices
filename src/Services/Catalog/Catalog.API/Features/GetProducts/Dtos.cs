@@ -1,8 +1,12 @@
 
+using Marten.Pagination;
+
 namespace Catalog.API.Features.GetProducts;
 
-public record Result(IReadOnlyList<Product> Products);
+public record Request(int? pageNumber, int? pageSize);
+
+public record Result(IPagedList<Product>? Products);
 
 public record Response(IEnumerable<Product> Products);
 
-public record Query: IQuery<Result>;
+public record Query(int? pageNumber, int? pageSize): IQuery<Result>;

@@ -4,9 +4,9 @@ public static class Router
 {
     public static void AddRoute(this IEndpointRouteBuilder app)
     {
-        app.MapGet("/products", async (ISender sender) =>
+        app.MapGet("/products", async (ISender sender, [AsParameters] Request request) =>
         {
-            var query = new Query();
+            var query = new Query(request.pageNumber, request.pageSize);
 
             var result = await sender.Send(query);
 
