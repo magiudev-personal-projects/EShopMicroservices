@@ -1,10 +1,9 @@
 namespace Catalog.API.Features.CreateProduct;
 
-internal class Handler(IDocumentSession session, ILogger<Handler> logger) : ICommandHandler<Command, Result>
+internal class Handler(IDocumentSession session) : ICommandHandler<Command, Result>
 {
     public async Task<Result> Handle(Command command, CancellationToken cancellationToken)
     {
-        logger.LogInformation("Command: {command}", command);
         var product = Maps.FromCommandToEntity(command);
         session.Store(product);
         await session.SaveChangesAsync(cancellationToken);

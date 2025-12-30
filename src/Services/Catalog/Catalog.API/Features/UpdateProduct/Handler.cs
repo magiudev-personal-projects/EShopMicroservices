@@ -3,12 +3,10 @@ using Catalog.API.Exceptions;
 
 namespace Catalog.API.Features.UpdateProduct;
 
-public class Handler(IDocumentSession session, ILogger<Handler> logger) : ICommandHandler<Command, Result>
+public class Handler(IDocumentSession session) : ICommandHandler<Command, Result>
 {
     public async Task<Result> Handle(Command command, CancellationToken cancellationToken)
     {
-        logger.LogInformation("Command: {command}", command);
-
         var product = await session.LoadAsync<Product>(command.Id, cancellationToken);
 
         if(product == null)
