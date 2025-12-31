@@ -26,9 +26,13 @@ builder.Services.AddExceptionHandler<ExceptionHandler>();
 
 builder.Services.AddProblemDetails();
 
+builder.Services.AddHealthChecks();
+
 var app = builder.Build();
 
 app.AddRoutes();
+
+app.UseHealthChecks("/health");
 
 app.UseExceptionHandler();
 
