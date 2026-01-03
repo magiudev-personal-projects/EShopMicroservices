@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CatalogApi", "CatalogApi\Ca
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BuildingBlocks", "BuildingBlocks\BuildingBlocks.csproj", "{824F66F8-01CF-4E75-8F78-648F5B5434D8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BasketApi", "BasketApi\BasketApi.csproj", "{73773E0D-0EF6-43FA-9783-F1E4D8CC1BAF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +26,9 @@ Global
 		{824F66F8-01CF-4E75-8F78-648F5B5434D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{824F66F8-01CF-4E75-8F78-648F5B5434D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{824F66F8-01CF-4E75-8F78-648F5B5434D8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{73773E0D-0EF6-43FA-9783-F1E4D8CC1BAF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{73773E0D-0EF6-43FA-9783-F1E4D8CC1BAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{73773E0D-0EF6-43FA-9783-F1E4D8CC1BAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{73773E0D-0EF6-43FA-9783-F1E4D8CC1BAF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

@@ -16,5 +16,21 @@
                 "/Views": "${workspaceFolder}/Views"
             }
         },
+        {
+            "name": "Basket API",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build",
+            "program": "${workspaceFolder}/BasketApi/bin/Debug/net8.0/BasketApi.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/BasketApi",
+            "stopAtEntry": false,
+            "env": {
+                "ASPNETCORE_ENVIRONMENT": "Development"
+            },
+            "sourceFileMap": {
+                "/Views": "${workspaceFolder}/Views"
+            }
+        },
     ]
 }
