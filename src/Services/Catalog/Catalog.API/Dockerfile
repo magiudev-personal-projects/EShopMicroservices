@@ -13,7 +13,9 @@ COPY ["src/Services/Catalog/Catalog.API/Catalog.API.csproj", "src/Services/Catal
 COPY ["src/BuildingBlocks/BuildingBlocks/BuildingBlocks.csproj", "src/BuildingBlocks/BuildingBlocks/"]
 RUN dotnet restore "src/Services/Catalog/Catalog.API/Catalog.API.csproj"
 COPY . .
-WORKDIR "/src/Services/Catalog/Catalog.API"
+
+# Fx folder structure
+WORKDIR "/src/src/Services/Catalog/Catalog.API"
 RUN dotnet build "Catalog.API.csproj" -c $configuration -o /app/build
 
 FROM build AS publish
