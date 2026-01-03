@@ -10,5 +10,5 @@ services:
     # args:
     #   - configuration=Debug
 
-volumes:
-  postgres_catalog:
+# volumes:
+#   postgres_catalog:
