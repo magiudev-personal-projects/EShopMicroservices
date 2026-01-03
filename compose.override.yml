@@ -32,6 +32,8 @@ services:
     ports:
       - "6003:8080"
       - "6063:8081"
+    # args:
+    #   - configuration=Debug
 
     # Development
     volumes:
@@ -39,5 +41,3 @@ services:
 
     #  Debug locally
     #  - ~/.vsdbg:/remote_debugger:rw
-
-
