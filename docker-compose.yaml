@@ -6,7 +6,7 @@ services:
     image: catalogapi
     build:
       context: .
-      dockerfile: src/Services/Catalog/Catalog.API/Dockerfile
+      dockerfile: CatalogApi/Dockerfile
     # args:
     #   - configuration=Debug
 

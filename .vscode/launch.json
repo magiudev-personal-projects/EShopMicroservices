@@ -1,22 +1,13 @@
 {
     "configurations": [
         {
-            "name": "Containers: Catalog API",
-            "type": "docker",
-            "request": "launch",
-            "preLaunchTask": "docker-run-catalog-api: debug",
-            "netCore": {
-                "appProject": "${workspaceFolder}/src/Services/Catalog/Catalog.API/Catalog.API.csproj"
-            }
-        },
-        {
             "name": "Catalog API",
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build",
-            "program": "${workspaceFolder}/src/Services/Catalog/Catalog.API/bin/Debug/net8.0/Catalog.API.dll",
+            "program": "${workspaceFolder}/CatalogApi/bin/Debug/net8.0/CatalogApi.dll",
             "args": [],
-            "cwd": "${workspaceFolder}/src/Services/Catalog/Catalog.API",
+            "cwd": "${workspaceFolder}/CatalogApi",
             "stopAtEntry": false,
             "env": {
                 "ASPNETCORE_ENVIRONMENT": "Development"
@@ -24,11 +15,6 @@
             "sourceFileMap": {
                 "/Views": "${workspaceFolder}/Views"
             }
-        },
-        {
-            "name": ".NET Core Attach",
-            "type": "coreclr",
-            "request": "attach"
         },
     ]
 }
