@@ -6,7 +6,7 @@ public static class Router
     {
         app.MapGet("/products", async (ISender sender, [AsParameters] Request request) =>
         {
-            var query = new Query(request.pageNumber, request.pageSize);
+            var query = Maps.FromRequestToQuery(request);
 
             var result = await sender.Send(query);
 

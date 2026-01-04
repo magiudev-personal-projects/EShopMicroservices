@@ -5,7 +5,7 @@ namespace CatalogApi.Features.GetProducts;
 
 public record Request(int? pageNumber, int? pageSize);
 
-public record Result(IPagedList<Product>? Products);
+public record Result(IPagedList<Product> Products);
 
 public record Response(IEnumerable<Product> Products);
 

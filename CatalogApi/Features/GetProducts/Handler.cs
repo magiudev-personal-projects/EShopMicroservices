@@ -1,5 +1,5 @@
 
-
+using BuildingBlocks.Exceptions;
 using Marten.Pagination;
 
 namespace CatalogApi.Features.GetProducts;
@@ -13,7 +13,10 @@ public class Handler(IDocumentSession session) : IQueryHandler<Query, Result>
         var products = await session
             .Query<Product>()
             .ToPagedListAsync(pageNumber, pageSize, cancellationToken);
-        
-        return new Result(products);
+
+        if(products is IPagedList<Product> nonNullableProducts)
+            return new Result(nonNullableProducts);
+
+        throw new InternalServerException("Something went wrong");
     }
 }
