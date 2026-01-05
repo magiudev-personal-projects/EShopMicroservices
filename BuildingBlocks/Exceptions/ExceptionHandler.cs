@@ -1,12 +1,11 @@
 using FluentValidation;
 using BuildingBlocks.Exceptions;
-using BuildingBlocks.NotFoundException;
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
-namespace CatalogApi;
+namespace BuildingBlocks;
 
 public class ExceptionHandler : IExceptionHandler
 {

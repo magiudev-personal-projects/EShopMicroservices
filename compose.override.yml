@@ -41,3 +41,18 @@ services:
 
     #  Debug locally
     #  - ~/.vsdbg:/remote_debugger:rw
+
+  basketdb:
+    container_name: basketdb
+    environment:
+      - POSTGRES_DB=BasketDb
+
+      # Development
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_USER=postgres
+
+    restart: always
+    ports:
+        - "5433:5432"
+    # volumes:
+    #   - postgres_basket:/var/lib/postgresql

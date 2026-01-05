@@ -1,4 +1,5 @@
 
+using BuildingBlocks;
 using BuildingBlocks.Behaviours;
 using CatalogApi;
 using CatalogApi.DbSeed;

@@ -9,6 +9,9 @@ services:
       dockerfile: CatalogApi/Dockerfile
     # args:
     #   - configuration=Debug
+  
+  basketdb:
+    image: postgres
 
 # volumes:
 #   postgres_catalog:

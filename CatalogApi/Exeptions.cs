@@ -1,4 +1,4 @@
-using BuildingBlocks.NotFoundException;
+using BuildingBlocks.Exceptions;
 
 namespace CatalogApi.Exceptions;
 
