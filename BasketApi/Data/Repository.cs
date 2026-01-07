@@ -5,11 +5,6 @@ namespace BasketApi.Data;
 
 public class Repository(IDocumentSession session): IRepository
 {
-    public Task<bool> DeleteBasket(string userName, CancellationToken cancellationToken = default)
-    {
-        throw new NotImplementedException();
-    }
-
     public async Task<ShoppingCart> GetBasket(string userName, CancellationToken cancellationToken = default)
     {
         var basket = await session.LoadAsync<ShoppingCart>(userName, cancellationToken);
@@ -17,8 +12,17 @@ public class Repository(IDocumentSession session): IRepository
         return basket is null ? throw new BasketNotFoundException(userName) : basket;
     }
 
-    public Task<ShoppingCart> StoreBasket(ShoppingCart basket, CancellationToken cancellationToken = default)
+    public async Task<ShoppingCart> StoreBasket(ShoppingCart basket, CancellationToken cancellationToken = default)
     {
-        throw new NotImplementedException();
+        session.Store(basket);
+        await session.SaveChangesAsync(cancellationToken);
+        return basket;
+    }
+
+    public async Task<bool> DeleteBasket(string userName, CancellationToken cancellationToken = default)
+    {
+        session.Delete<ShoppingCart>(userName);
+        await session.SaveChangesAsync(cancellationToken);
+        return true;
     }
 }
