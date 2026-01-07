@@ -7,7 +7,7 @@ public static class Router
 {
     public static void AddRoute(this IEndpointRouteBuilder app)
     {
-        app.MapGet("/basket/{userName}", async ([FromRoute] string userName, ISender sender) =>
+        app.MapGet("/baskets/{userName}", async ([FromRoute] string userName, ISender sender) =>
         {
             var query = new Query(userName);
 
