@@ -6,6 +6,7 @@ using BuildingBlocks.Behaviours;
 using HealthChecks.UI.Client;
 using Marten;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
+using FluentValidation;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,7 +17,7 @@ builder.Services.AddMediatR(config =>
     config.AddOpenBehavior(typeof(ValidationBehaviour<,>));
     config.AddOpenBehavior(typeof(LoggingBehaviour<,>));
 });
-
+builder.Services.AddValidatorsFromAssembly(assembly);
 var dbConnectionString = builder.Configuration.GetConnectionString("Database")!;
 builder.Services.AddMarten(options =>
 {
