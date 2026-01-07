@@ -4,6 +4,6 @@ public class Maps
 {
     public static Response FromResultToResponse(Result result)
     {
-        return new Response(result.ShoppingCart);
+        return new Response(result.basket);
     }
 }

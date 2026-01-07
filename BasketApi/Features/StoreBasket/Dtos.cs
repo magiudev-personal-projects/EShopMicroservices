@@ -2,10 +2,10 @@ using BasketApi.Models;
 
 namespace BasketApi.Features.StoreBasket;
 
-public record Request(ShoppingCart Cart);
+public record Request(Basket Basket);
 
 public record Response(string UserName);
 
-public record Command(ShoppingCart Cart) : ICommand<Result>;
+public record Command(Basket Basket) : ICommand<Result>;
 
 public record Result(string UserName);

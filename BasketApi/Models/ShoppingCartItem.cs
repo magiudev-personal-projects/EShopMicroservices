@@ -1,6 +1,6 @@
 namespace BasketApi.Models;
 
-public class ShoppingCartItem
+public class BasketItem
 {
     public int Quantity { get; set; } = default!;
     public string Color { get; set; } = default!;

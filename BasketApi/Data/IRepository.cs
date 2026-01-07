@@ -4,7 +4,7 @@ namespace BasketApi.Data;
 
 public interface IRepository
 {
-    Task<ShoppingCart> GetBasket(string userName, CancellationToken cancellationToken = default);
-    Task<ShoppingCart> StoreBasket(ShoppingCart basket, CancellationToken cancellationToken = default);
+    Task<Basket> GetBasket(string userName, CancellationToken cancellationToken = default);
+    Task<Basket> StoreBasket(Basket basket, CancellationToken cancellationToken = default);
     Task<bool> DeleteBasket(string userName, CancellationToken cancellationToken = default);
 }

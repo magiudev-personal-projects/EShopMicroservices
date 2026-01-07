@@ -22,7 +22,7 @@ var dbConnectionString = builder.Configuration.GetConnectionString("Database")!;
 builder.Services.AddMarten(options =>
 {
     options.Connection(dbConnectionString);
-    options.Schema.For<ShoppingCart>().Identity(x => x.UserName);
+    options.Schema.For<Basket>().Identity(x => x.UserName);
 }).UseLightweightSessions();
 
 builder.Services.AddScoped<IRepository, Repository>();

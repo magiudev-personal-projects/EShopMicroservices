@@ -4,7 +4,7 @@ public class Maps
 {
     public static Command FromRequestToCommand(Request request)
     {
-        return new Command(request.Cart);
+        return new Command(request.Basket);
     }
 
     public static Response FromResultToResponse(Result result)

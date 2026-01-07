@@ -2,8 +2,8 @@ using BasketApi.Models;
 
 namespace BasketApi.Features.GetBasketByUsername;
 
-public record Result(ShoppingCart ShoppingCart);
+public record Result(Basket basket);
 
-public record Response(ShoppingCart ShoppingCart);
+public record Response(Basket basket);
 
 public record Query(string UserName): IQuery<Result>;
