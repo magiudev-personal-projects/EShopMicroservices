@@ -7,6 +7,7 @@ using HealthChecks.UI.Client;
 using Marten;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using FluentValidation;
+using Microsoft.Extensions.Caching.Distributed;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -25,7 +26,13 @@ builder.Services.AddMarten(options =>
     options.Schema.For<Basket>().Identity(x => x.UserName);
 }).UseLightweightSessions();
 
-builder.Services.AddScoped<IRepository, Repository>();
+builder.Services.AddScoped<Repository>();
+builder.Services.AddScoped<IRepository>(provider =>
+{
+    var repositor = provider.GetRequiredService<Repository>();
+    var distributedCacheService = provider.GetRequiredService<IDistributedCache>();
+    return new CachedRepository(repositor, distributedCacheService);
+});
 
 builder.Services.AddExceptionHandler<ExceptionHandler>();
 
@@ -33,6 +40,11 @@ builder.Services.AddHealthChecks()
     .AddNpgSql(dbConnectionString);
 
 builder.Services.AddProblemDetails();
+
+builder.Services.AddStackExchangeRedisCache(options =>
+{
+    options.Configuration = builder.Configuration.GetConnectionString("Redis");
+});
 
 var app = builder.Build();
 
