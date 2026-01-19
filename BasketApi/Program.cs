@@ -26,13 +26,8 @@ builder.Services.AddMarten(options =>
     options.Schema.For<Basket>().Identity(x => x.UserName);
 }).UseLightweightSessions();
 
-builder.Services.AddScoped<Repository>();
-builder.Services.AddScoped<IRepository>(provider =>
-{
-    var repositor = provider.GetRequiredService<Repository>();
-    var distributedCacheService = provider.GetRequiredService<IDistributedCache>();
-    return new CachedRepository(repositor, distributedCacheService);
-});
+builder.Services.AddScoped<IRepository, Repository>();
+builder.Services.Decorate<IRepository, CachedRepository>();
 
 builder.Services.AddExceptionHandler<ExceptionHandler>();
 
