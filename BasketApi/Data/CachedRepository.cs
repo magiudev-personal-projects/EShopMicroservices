@@ -33,8 +33,8 @@ public class CachedRepository(IRepository _repository, IDistributedCache _cache)
 
     public async Task<bool> DeleteBasket(string userName, CancellationToken cancellationToken = default)
     {
-        await _repository.DeleteBasket(userName, cancellationToken);
         await _cache.RemoveAsync(userName, cancellationToken);
+        await _repository.DeleteBasket(userName, cancellationToken);
         return true;
     }
 }

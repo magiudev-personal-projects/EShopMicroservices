@@ -21,6 +21,7 @@ public class Repository(IDocumentSession session): IRepository
 
     public async Task<bool> DeleteBasket(string userName, CancellationToken cancellationToken = default)
     {
+        await GetBasket(userName, cancellationToken);
         session.Delete<Basket>(userName);
         await session.SaveChangesAsync(cancellationToken);
         return true;
