@@ -30,8 +30,37 @@ services:
     depends_on:
       - catalogdb
     ports:
-      - "6003:8080"
-      - "6063:8081"
+      - "6000:8080"
+      - "6060:8081"
+    # args:
+    #   - configuration=Debug
+
+    # Development
+    volumes:
+     - ./https/aspnetapp.pfx:/https/aspnetapp.pfx
+
+    #  Debug locally
+    #  - ~/.vsdbg:/remote_debugger:rw
+
+  basketapi:
+    container_name: basketapi
+    environment:
+      - ASPNETCORE_HTTP_PORTS=8080
+      - ASPNETCORE_HTTPS_PORTS=8081
+
+      # Development
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__Database=Server=BasketDb;Port=5432;Database=BasketDb;User Id=postgres;Password=postgres;Include Error Detail=true
+      - ConnectionStrings__Redis=distributedcache:6379
+      - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/aspnetapp.pfx
+      - ASPNETCORE_Kestrel__Certificates__Default__Password=MySecretPassword
+
+    depends_on:
+      - basketdb
+      - distributedcache
+    ports:
+      - "6001:8080"
+      - "6061:8081"
     # args:
     #   - configuration=Debug
 

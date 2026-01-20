@@ -13,8 +13,15 @@ services:
   basketdb:
     image: postgres
 
+  basketapi:
+    image: basketapi
+    build:
+      context: .
+      dockerfile: BasketApi/Dockerfile
+
   distributedcache:
     image: redis
+
 
 # volumes:
 #   postgres_catalog:
