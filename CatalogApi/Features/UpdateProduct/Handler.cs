@@ -9,7 +9,7 @@ public class Handler(IDocumentSession session) : ICommandHandler<Command, Result
     {
         var product = await session.LoadAsync<Product>(command.Id, cancellationToken);
 
-        if(product == null)
+        if (product == null)
             throw new ProductNotFoundException(command.Id);
 
         Maps.UpdateEntityFromCommand(command, ref product);

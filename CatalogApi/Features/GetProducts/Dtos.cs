@@ -9,4 +9,4 @@ public record Result(IPagedList<Product> Products);
 
 public record Response(IEnumerable<Product> Products);
 
-public record Query(int? pageNumber, int? pageSize): IQuery<Result>;
+public record Query(int? pageNumber, int? pageSize) : IQuery<Result>;

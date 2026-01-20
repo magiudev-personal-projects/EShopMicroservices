@@ -2,7 +2,7 @@ using FluentValidation;
 
 namespace BasketApi.Features.CheckoutBasket;
 
-public class CheckoutBasketCommandValidator 
+public class CheckoutBasketCommandValidator
     : AbstractValidator<Command>
 {
     public CheckoutBasketCommandValidator()

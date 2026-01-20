@@ -14,7 +14,7 @@ public class Handler(IDocumentSession session) : IQueryHandler<Query, Result>
             .Query<Product>()
             .ToPagedListAsync(pageNumber, pageSize, cancellationToken);
 
-        if(products is IPagedList<Product> nonNullableProducts)
+        if (products is IPagedList<Product> nonNullableProducts)
             return new Result(nonNullableProducts);
 
         throw new InternalServerException("Something went wrong");

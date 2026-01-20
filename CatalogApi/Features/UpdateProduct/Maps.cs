@@ -6,10 +6,10 @@ public static class Maps
     {
         return new Command(
             Id,
-            request.Name, 
-            request.Categories, 
-            request.Description, 
-            request.ImageFile, 
+            request.Name,
+            request.Categories,
+            request.Description,
+            request.ImageFile,
             request.Price
         );
     }

@@ -5,7 +5,7 @@ using BasketApi.Data;
 public class CheckoutBasketCommandHandler
     (IRepository repository
     // , IPublishEndpoint publishEndpoint
-    ): ICommandHandler<Command, Result>
+    ) : ICommandHandler<Command, Result>
 {
     public async Task<Result> Handle(Command command, CancellationToken cancellationToken)
     {

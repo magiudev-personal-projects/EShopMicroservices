@@ -2,7 +2,7 @@ using FluentValidation;
 
 namespace BasketApi.Features.StoreBasket;
 
-public class CommandValidator: AbstractValidator<Command>
+public class CommandValidator : AbstractValidator<Command>
 {
     public CommandValidator()
     {

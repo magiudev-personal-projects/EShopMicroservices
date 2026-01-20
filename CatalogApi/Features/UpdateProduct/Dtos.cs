@@ -15,7 +15,7 @@ public record Command(
     string Description,
     string ImageFile,
     decimal Price
-): ICommand<Result>;
+) : ICommand<Result>;
 
 public record Result(bool updated);
 public record Response(bool updated);

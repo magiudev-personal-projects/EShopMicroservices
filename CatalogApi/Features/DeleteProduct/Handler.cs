@@ -3,12 +3,12 @@ using CatalogApi.Exceptions;
 
 namespace CatalogApi.Features.DeleteProduct;
 
-public class Handler(IDocumentSession session): ICommandHandler<Command, Result>
+public class Handler(IDocumentSession session) : ICommandHandler<Command, Result>
 {
     public async Task<Result> Handle(Command command, CancellationToken cancellationToken)
     {
         var product = await session.LoadAsync<Product>(command.Id, cancellationToken);
-        if(product == null)
+        if (product == null)
             throw new ProductNotFoundException(command.Id);
         session.Delete<Product>(command.Id);
         await session.SaveChangesAsync(cancellationToken);

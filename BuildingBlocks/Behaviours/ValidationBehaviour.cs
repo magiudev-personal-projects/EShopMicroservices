@@ -5,9 +5,9 @@ using MediatR;
 namespace BuildingBlocks.Behaviours;
 
 public class ValidationBehaviour<TRequest, TResponse>
-    (IEnumerable<IValidator<TRequest>> validators): 
+    (IEnumerable<IValidator<TRequest>> validators) :
     IPipelineBehavior<TRequest, TResponse>
-    where TRequest: ICommand<TResponse>
+    where TRequest : ICommand<TResponse>
 {
     public async Task<TResponse> Handle(TRequest request, RequestHandlerDelegate<TResponse> next, CancellationToken cancellationToken)
     {
@@ -22,10 +22,10 @@ public class ValidationBehaviour<TRequest, TResponse>
             .Where(validationResult => validationResult.Errors.Any())
             .SelectMany(validationResult => validationResult.Errors)
             .ToList();
-        
-        if(failures.Any())
+
+        if (failures.Any())
             throw new ValidationException(failures);
-        
+
         return await next();
     }
 }

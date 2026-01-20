@@ -1,4 +1,5 @@
 namespace BasketApi.Features.CheckoutBasket;
+
 public class Checkout
 {
     public string UserName { get; set; } = default!;
@@ -25,6 +26,6 @@ public class Checkout
 public record Request(Checkout checkout);
 public record Response(bool IsSuccess);
 
-public record Command(Checkout checkout) 
+public record Command(Checkout checkout)
     : ICommand<Result>;
 public record Result(bool IsSuccess);

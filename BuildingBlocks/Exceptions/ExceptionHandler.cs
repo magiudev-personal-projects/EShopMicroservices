@@ -39,11 +39,11 @@ public class ExceptionHandler : IExceptionHandler
 
         problemDetails.Extensions.Add("traceId", context.TraceIdentifier);
 
-        if(exception is ValidationException validationException)
+        if (exception is ValidationException validationException)
             problemDetails.Extensions.Add("ValidationErrors", validationException.Errors);
-        
+
         context.Response.StatusCode = status;
-        
+
         logger.LogError(
             "Error Message: {exceptionMessage}, Time of occurrence {time}",
             exceptionMessage, DateTime.UtcNow);

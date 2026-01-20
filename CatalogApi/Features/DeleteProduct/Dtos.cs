@@ -1,6 +1,6 @@
 namespace CatalogApi.Features.DeleteProduct;
 
-public record Command(Guid Id): ICommand<Result>;
+public record Command(Guid Id) : ICommand<Result>;
 
 public record Result(bool IsDeleted);
 

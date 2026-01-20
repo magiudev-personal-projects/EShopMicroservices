@@ -3,12 +3,12 @@ using Marten;
 
 namespace BasketApi.Data;
 
-public class Repository(IDocumentSession session): IRepository
+public class Repository(IDocumentSession session) : IRepository
 {
     public async Task<Basket> GetBasket(string userName, CancellationToken cancellationToken = default)
     {
         var basket = await session.LoadAsync<Basket>(userName, cancellationToken);
-        
+
         return basket is null ? throw new BasketNotFoundException(userName) : basket;
     }
 

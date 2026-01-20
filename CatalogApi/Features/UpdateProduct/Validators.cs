@@ -1,6 +1,6 @@
 namespace CatalogApi.Features.UpdateProduct;
 
-public class CommandValidators: AbstractValidator<Command>
+public class CommandValidators : AbstractValidator<Command>
 {
     public CommandValidators()
     {
