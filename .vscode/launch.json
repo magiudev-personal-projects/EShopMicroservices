@@ -17,6 +17,14 @@
             "program": "${workspaceFolder}/BasketApi/bin/Debug/net8.0/BasketApi.dll",
             "cwd": "${workspaceFolder}/BasketApi",
             "requireExactSource": false
+        },
+        {
+            "name": "Discount",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build-discount",
+            "program": "${workspaceFolder}/DiscountGrpc/bin/Debug/net10.0/DiscountGrpc.dll",
+            "cwd": "${workspaceFolder}/DiscountGrpc"
         }
     ]
 }

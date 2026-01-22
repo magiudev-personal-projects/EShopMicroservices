@@ -21,13 +21,23 @@
 			],
 			"problemMatcher": "$msCompile"
 		},
-				{
+		{
 			"label": "build-basket",
 			"command": "dotnet",
 			"type": "process",
 			"args": [
 				"build",
 				"${workspaceFolder}/BasketApi/BasketApi.csproj",
+			],
+			"problemMatcher": "$msCompile"
+		},
+		{
+			"label": "build-discount",
+			"command": "dotnet",
+			"type": "process",
+			"args": [
+				"build",
+				"${workspaceFolder}/DiscountGrpc/DiscountGrpc.csproj",
 			],
 			"problemMatcher": "$msCompile"
 		},
