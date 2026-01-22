@@ -1,36 +1,22 @@
 {
     "configurations": [
         {
-            "name": "Catalog API",
+            "name": "Catalog",
             "type": "coreclr",
             "request": "launch",
-            "preLaunchTask": "build",
+            "preLaunchTask": "build-catalog",
             "program": "${workspaceFolder}/CatalogApi/bin/Debug/net8.0/CatalogApi.dll",
-            "args": [],
             "cwd": "${workspaceFolder}/CatalogApi",
-            "stopAtEntry": false,
-            "env": {
-                "ASPNETCORE_ENVIRONMENT": "Development"
-            },
-            "sourceFileMap": {
-                "/Views": "${workspaceFolder}/Views"
-            }
+            "requireExactSource": false
         },
         {
-            "name": "Basket API",
+            "name": "Basket",
             "type": "coreclr",
             "request": "launch",
-            "preLaunchTask": "build",
+            "preLaunchTask": "build-basket",
             "program": "${workspaceFolder}/BasketApi/bin/Debug/net8.0/BasketApi.dll",
-            "args": [],
             "cwd": "${workspaceFolder}/BasketApi",
-            "stopAtEntry": false,
-            "env": {
-                "ASPNETCORE_ENVIRONMENT": "Development"
-            },
-            "sourceFileMap": {
-                "/Views": "${workspaceFolder}/Views"
-            }
-        },
+            "requireExactSource": false
+        }
     ]
 }
