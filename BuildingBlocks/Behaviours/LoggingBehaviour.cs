@@ -4,16 +4,23 @@ using Microsoft.Extensions.Logging;
 
 namespace BuildingBlocks.Behaviours;
 
-public class LoggingBehaviour<TRequest, TResponse>
-    (ILogger<LoggingBehaviour<TRequest, TResponse>> logger) :
-        IPipelineBehavior<TRequest, TResponse>
-        where TRequest : notnull, IRequest<TResponse>
-        where TResponse : notnull
+public class LoggingBehaviour<TRequest, TResponse>(
+    ILogger<LoggingBehaviour<TRequest, TResponse>> logger
+) : IPipelineBehavior<TRequest, TResponse>
+    where TRequest : notnull, IRequest<TResponse>
+    where TResponse : notnull
 {
-    public async Task<TResponse> Handle(TRequest request, RequestHandlerDelegate<TResponse> next, CancellationToken cancellationToken)
+    public async Task<TResponse> Handle(
+        TRequest request,
+        RequestHandlerDelegate<TResponse> next,
+        CancellationToken cancellationToken
+    )
     {
-        logger.LogInformation("[START] Handle request={Request} - RequestData={RequestData}",
-            typeof(TRequest).FullName, request);
+        logger.LogInformation(
+            "[START] Handle request={Request} - RequestData={RequestData}",
+            typeof(TRequest).FullName,
+            request
+        );
 
         var timer = new Stopwatch();
         timer.Start();
@@ -23,10 +30,17 @@ public class LoggingBehaviour<TRequest, TResponse>
         timer.Stop();
         var timeTaken = timer.Elapsed;
         if (timeTaken.Seconds > 3)
-            logger.LogWarning("[PERFORMANCE] The request {Request} took {TimeTaken} seconds.",
-                typeof(TRequest).FullName, timeTaken.Seconds);
+            logger.LogWarning(
+                "[PERFORMANCE] The request {Request} took {TimeTaken} seconds.",
+                typeof(TRequest).FullName,
+                timeTaken.Seconds
+            );
 
-        logger.LogInformation("[END] Handled {Request} with {Response}", typeof(TRequest).FullName, response);
+        logger.LogInformation(
+            "[END] Handled {Request} with {Response}",
+            typeof(TRequest).FullName,
+            response
+        );
         return response;
     }
 }

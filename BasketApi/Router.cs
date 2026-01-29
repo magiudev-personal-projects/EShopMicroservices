@@ -1,8 +1,7 @@
-
-using GetBasketByUsernameRouter = BasketApi.Features.GetBasketByUsername.Router;
-using StoreBasketRouter = BasketApi.Features.StoreBasket.Router;
 using CheckoutBasket = BasketApi.Features.CheckoutBasket.Router;
 using DeleteBasket = BasketApi.Features.DeleteBasket.Router;
+using GetBasketByUsernameRouter = BasketApi.Features.GetBasketByUsername.Router;
+using StoreBasketRouter = BasketApi.Features.StoreBasket.Router;
 
 namespace BasketApi;
 
@@ -16,4 +15,3 @@ public static class Router
         DeleteBasket.AddRoute(app);
     }
 }
-

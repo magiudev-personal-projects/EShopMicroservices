@@ -1,4 +1,3 @@
-
 using BuildingBlocks;
 using BuildingBlocks.Behaviours;
 using CatalogApi;
@@ -17,10 +16,12 @@ builder.Services.AddMediatR(config =>
 
 builder.Services.AddValidatorsFromAssembly(assembly);
 var dbConnectionString = builder.Configuration.GetConnectionString("Database")!;
-builder.Services.AddMarten(options =>
-{
-    options.Connection(dbConnectionString);
-}).UseLightweightSessions();
+builder
+    .Services.AddMarten(options =>
+    {
+        options.Connection(dbConnectionString);
+    })
+    .UseLightweightSessions();
 
 if (builder.Environment.IsDevelopment())
     builder.Services.InitializeMartenWith<CatalogInitialData>();
@@ -35,11 +36,10 @@ var app = builder.Build();
 
 app.AddRoutes();
 
-app.UseHealthChecks("/health",
-    new HealthCheckOptions
-    {
-        ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
-    });
+app.UseHealthChecks(
+    "/health",
+    new HealthCheckOptions { ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse }
+);
 
 app.UseExceptionHandler();
 

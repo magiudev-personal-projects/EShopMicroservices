@@ -6,6 +6,7 @@ public class Maps
     {
         return new Query(request.pageNumber, request.pageSize);
     }
+
     public static Response FromResultToResponse(Result result)
     {
         return new Response(result.Products);

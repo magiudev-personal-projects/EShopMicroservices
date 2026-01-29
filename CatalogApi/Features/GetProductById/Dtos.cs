@@ -1,4 +1,3 @@
-
 namespace CatalogApi.Features.GetProductById;
 
 public record Result(Product Product);

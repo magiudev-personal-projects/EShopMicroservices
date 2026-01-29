@@ -2,8 +2,7 @@ using BasketApi.Data;
 
 namespace BasketApi.Features.DeleteBasket;
 
-public class DeleteBasketCommandHandler(IRepository repository)
-    : ICommandHandler<Command, Result>
+public class DeleteBasketCommandHandler(IRepository repository) : ICommandHandler<Command, Result>
 {
     public async Task<Result> Handle(Command command, CancellationToken cancellationToken)
     {

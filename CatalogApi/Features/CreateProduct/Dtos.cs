@@ -1,11 +1,11 @@
 namespace CatalogApi.Features.CreateProduct;
 
 public record Request(
-     string Name,
-     List<string> Categories,
-     string Description,
-     string ImageFile,
-     decimal Price
+    string Name,
+    List<string> Categories,
+    string Description,
+    string ImageFile,
+    decimal Price
 );
 
 public record Response(Guid Id);

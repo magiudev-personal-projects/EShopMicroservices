@@ -3,10 +3,10 @@ using BasketApi.Data;
 using BasketApi.Models;
 using BuildingBlocks;
 using BuildingBlocks.Behaviours;
+using FluentValidation;
 using HealthChecks.UI.Client;
 using Marten;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
-using FluentValidation;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -23,11 +23,13 @@ builder.Services.AddValidatorsFromAssembly(assembly);
 
 var dbConnectionString = builder.Configuration.GetConnectionString("Database")!;
 
-builder.Services.AddMarten(options =>
-{
-    options.Connection(dbConnectionString);
-    options.Schema.For<Basket>().Identity(x => x.UserName);
-}).UseLightweightSessions();
+builder
+    .Services.AddMarten(options =>
+    {
+        options.Connection(dbConnectionString);
+        options.Schema.For<Basket>().Identity(x => x.UserName);
+    })
+    .UseLightweightSessions();
 
 builder.Services.AddScoped<IRepository, Repository>();
 
@@ -36,9 +38,7 @@ builder.Services.Decorate<IRepository, CachedRepository>();
 builder.Services.AddExceptionHandler<ExceptionHandler>();
 
 var redisConnectionstring = builder.Configuration.GetConnectionString("Redis")!;
-builder.Services.AddHealthChecks()
-    .AddNpgSql(dbConnectionString)
-    .AddRedis(redisConnectionstring);
+builder.Services.AddHealthChecks().AddNpgSql(dbConnectionString).AddRedis(redisConnectionstring);
 
 builder.Services.AddStackExchangeRedisCache(options =>
 {
@@ -51,11 +51,10 @@ var app = builder.Build();
 
 app.UseExceptionHandler();
 
-app.UseHealthChecks("/health",
-    new HealthCheckOptions
-    {
-        ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
-    });
+app.UseHealthChecks(
+    "/health",
+    new HealthCheckOptions { ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse }
+);
 
 app.AddRoutes();
 

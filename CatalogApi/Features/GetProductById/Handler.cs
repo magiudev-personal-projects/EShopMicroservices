@@ -1,5 +1,3 @@
-
-
 using CatalogApi.Exceptions;
 
 namespace CatalogApi.Features.GetProductById;

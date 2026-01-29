@@ -1,4 +1,3 @@
-
 namespace CatalogApi.Features.GetProductsByCategory;
 
 public class Handler(IDocumentSession session) : IQueryHandler<Query, Result>

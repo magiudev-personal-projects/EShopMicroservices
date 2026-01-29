@@ -11,4 +11,3 @@ public class Handler(IRepository repository) : IQueryHandler<Query, Result>
         return new Result(basket);
     }
 }
-

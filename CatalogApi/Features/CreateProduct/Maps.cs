@@ -1,11 +1,16 @@
-
 namespace CatalogApi.Features.CreateProduct;
 
 public static class Maps
 {
     public static Command FromRequestToCommand(Request request)
     {
-        return new Command(request.Name, request.Categories, request.Description, request.ImageFile, request.Price);
+        return new Command(
+            request.Name,
+            request.Categories,
+            request.Description,
+            request.ImageFile,
+            request.Price
+        );
     }
 
     public static Product FromCommandToEntity(Command command)
@@ -16,7 +21,7 @@ public static class Maps
             Categories = command.Categories,
             Description = command.Description,
             ImageFile = command.ImageFile,
-            Price = command.Price
+            Price = command.Price,
         };
     }
 

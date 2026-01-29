@@ -1,4 +1,3 @@
-
 using Marten.Pagination;
 
 namespace CatalogApi.Features.GetProducts;

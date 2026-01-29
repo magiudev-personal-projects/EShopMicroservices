@@ -12,7 +12,5 @@ public class Basket
     }
 
     //Required for Mapping
-    public Basket()
-    {
-    }
+    public Basket() { }
 }

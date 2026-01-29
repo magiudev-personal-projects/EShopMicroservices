@@ -1,4 +1,3 @@
-
 using CatalogApi.Exceptions;
 
 namespace CatalogApi.Features.DeleteProduct;

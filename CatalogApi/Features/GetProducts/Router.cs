@@ -4,20 +4,23 @@ public static class Router
 {
     public static void AddRoute(this IEndpointRouteBuilder app)
     {
-        app.MapGet("/products", async (ISender sender, [AsParameters] Request request) =>
-        {
-            var query = Maps.FromRequestToQuery(request);
+        app.MapGet(
+                "/products",
+                async (ISender sender, [AsParameters] Request request) =>
+                {
+                    var query = Maps.FromRequestToQuery(request);
 
-            var result = await sender.Send(query);
+                    var result = await sender.Send(query);
 
-            var response = Maps.FromResultToResponse(result);
+                    var response = Maps.FromResultToResponse(result);
 
-            return Results.Ok(response);
-        })
-        .WithName("GetProducts")
-        .Produces<Response>(StatusCodes.Status200OK)
-        .ProducesProblem(StatusCodes.Status400BadRequest)
-        .WithSummary("Get all products")
-        .WithDescription("Get all products");
+                    return Results.Ok(response);
+                }
+            )
+            .WithName("GetProducts")
+            .Produces<Response>(StatusCodes.Status200OK)
+            .ProducesProblem(StatusCodes.Status400BadRequest)
+            .WithSummary("Get all products")
+            .WithDescription("Get all products");
     }
 }

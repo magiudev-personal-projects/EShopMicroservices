@@ -1,9 +1,9 @@
 using CreateProductRouter = CatalogApi.Features.CreateProduct.Router;
-using GetProductByIdRouter = CatalogApi.Features.GetProductById.Router;
-using GetProductsRouter = CatalogApi.Features.GetProducts.Router;
-using GetProductsByCategoryRouter = CatalogApi.Features.GetProductsByCategory.Router;
-using UpdateProductRouter = CatalogApi.Features.UpdateProduct.Router;
 using DeleteProductRouter = CatalogApi.Features.DeleteProduct.Router;
+using GetProductByIdRouter = CatalogApi.Features.GetProductById.Router;
+using GetProductsByCategoryRouter = CatalogApi.Features.GetProductsByCategory.Router;
+using GetProductsRouter = CatalogApi.Features.GetProducts.Router;
+using UpdateProductRouter = CatalogApi.Features.UpdateProduct.Router;
 
 namespace CatalogApi;
 

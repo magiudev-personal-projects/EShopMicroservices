@@ -4,18 +4,19 @@ using MediatR;
 
 namespace BuildingBlocks.Behaviours;
 
-public class ValidationBehaviour<TRequest, TResponse>
-    (IEnumerable<IValidator<TRequest>> validators) :
-    IPipelineBehavior<TRequest, TResponse>
+public class ValidationBehaviour<TRequest, TResponse>(IEnumerable<IValidator<TRequest>> validators)
+    : IPipelineBehavior<TRequest, TResponse>
     where TRequest : ICommand<TResponse>
 {
-    public async Task<TResponse> Handle(TRequest request, RequestHandlerDelegate<TResponse> next, CancellationToken cancellationToken)
+    public async Task<TResponse> Handle(
+        TRequest request,
+        RequestHandlerDelegate<TResponse> next,
+        CancellationToken cancellationToken
+    )
     {
         var context = new ValidationContext<TRequest>(request);
         var validationsResults = await Task.WhenAll(
-            validators.Select(
-                validator => validator.ValidateAsync(context, cancellationToken)
-            )
+            validators.Select(validator => validator.ValidateAsync(context, cancellationToken))
         );
 
         var failures = validationsResults

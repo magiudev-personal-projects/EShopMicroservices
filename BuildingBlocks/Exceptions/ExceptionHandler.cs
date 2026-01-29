@@ -1,5 +1,5 @@
-using FluentValidation;
 using BuildingBlocks.Exceptions;
+using FluentValidation;
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -10,14 +10,17 @@ namespace BuildingBlocks;
 public class ExceptionHandler : IExceptionHandler
 {
     private readonly ILogger<ExceptionHandler> logger;
+
     public ExceptionHandler(ILogger<ExceptionHandler> logger)
     {
         this.logger = logger;
     }
+
     public async ValueTask<bool> TryHandleAsync(
         HttpContext context,
         Exception exception,
-        CancellationToken cancellationToken)
+        CancellationToken cancellationToken
+    )
     {
         var exceptionMessage = exception.Message;
 
@@ -26,7 +29,7 @@ public class ExceptionHandler : IExceptionHandler
             NotFoundException => StatusCodes.Status404NotFound,
             BadRequestException or ValidationException => StatusCodes.Status400BadRequest,
             InternalServerException => StatusCodes.Status500InternalServerError,
-            _ => StatusCodes.Status500InternalServerError
+            _ => StatusCodes.Status500InternalServerError,
         };
 
         var problemDetails = new ProblemDetails
@@ -34,7 +37,7 @@ public class ExceptionHandler : IExceptionHandler
             Title = exception.GetType().Name,
             Status = status,
             Detail = exceptionMessage,
-            Instance = context.Request.Path
+            Instance = context.Request.Path,
         };
 
         problemDetails.Extensions.Add("traceId", context.TraceIdentifier);
@@ -46,7 +49,9 @@ public class ExceptionHandler : IExceptionHandler
 
         logger.LogError(
             "Error Message: {exceptionMessage}, Time of occurrence {time}",
-            exceptionMessage, DateTime.UtcNow);
+            exceptionMessage,
+            DateTime.UtcNow
+        );
 
         await context.Response.WriteAsJsonAsync(problemDetails, cancellationToken);
 

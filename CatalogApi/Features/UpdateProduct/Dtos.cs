@@ -18,4 +18,5 @@ public record Command(
 ) : ICommand<Result>;
 
 public record Result(bool updated);
+
 public record Response(bool updated);
