@@ -1,6 +1,6 @@
 namespace DiscountGrpc.Models;
 
-public class Cupon
+public class Coupon
 {
     public int Id { get; set; }
     public string ProductName { get; set; } = string.Empty;

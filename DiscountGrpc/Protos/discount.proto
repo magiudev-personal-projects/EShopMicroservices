@@ -7,9 +7,9 @@ package discount;
 // The discount service definition.
 service DiscountProtoService {
   // CRUD Operations
-  rpc GetDiscount (GetDiscountRequest) returns (CuponModel);
-  rpc CreateDiscount (InsertCuponRequest) returns (CuponModel);
-  rpc UpdateDiscount (InsertCuponRequest) returns (CuponModel);
+  rpc GetDiscount (GetDiscountRequest) returns (CouponModel);
+  rpc CreateDiscount (InsertCouponRequest) returns (CouponModel);
+  rpc UpdateDiscount (InsertCouponRequest) returns (CouponModel);
   rpc DeleteDiscount (DeleteDiscountRequest) returns (DeleteDiscountResponse);
 }
 
@@ -17,7 +17,7 @@ message GetDiscountRequest {
   string ProductName = 1;
 }
 
-message CuponModel {
+message CouponModel {
   // TODO: request models should not have the ID
   int32 Id = 1;
   string ProductName = 2;
@@ -25,8 +25,8 @@ message CuponModel {
   int32 Amount = 4;
 }
 
-message InsertCuponRequest {
-  CuponModel Cupon = 1;
+message InsertCouponRequest {
+  CouponModel Coupon = 1;
 }
 
 message DeleteDiscountRequest {
