@@ -1,3 +1,4 @@
+using Discount.Grpc.Data;
 using DiscountGrpc.Data;
 using DiscountGrpc.Services;
 using Microsoft.EntityFrameworkCore;
@@ -12,7 +13,7 @@ builder.Services.AddDbContext<DiscountContext>(options =>
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+app.UseMigrations();
 app.MapGrpcService<DiscountService>();
 app.MapGet(
     "/",
