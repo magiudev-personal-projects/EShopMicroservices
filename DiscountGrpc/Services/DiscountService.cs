@@ -1,6 +1,5 @@
 using DiscountGrpc.Data;
 using DiscountGrpc.Maps;
-using DiscountGrpc.Models;
 using Grpc.Core;
 using Microsoft.EntityFrameworkCore;
 
@@ -18,12 +17,9 @@ public class DiscountService(DiscountContext dbContext, ILogger<DiscountService>
             coupon.ProductName == request.ProductName
         );
         if (coupon == null)
-            coupon = new Coupon
-            {
-                ProductName = "No Product Name",
-                Description = "No Description",
-                Amount = 0,
-            };
+            throw new RpcException(
+                new Status(StatusCode.NotFound, $"Coupon {coupon?.ProductName} not found")
+            );
 
         logger.LogInformation(
             "Discount is retrieved for ProductName : {productName}, Amount : {amount}",
