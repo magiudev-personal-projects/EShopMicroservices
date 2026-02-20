@@ -9,7 +9,7 @@ services:
       dockerfile: CatalogApi/Dockerfile
     # args:
     #   - configuration=Debug
-  
+
   basketdb:
     image: postgres
 
@@ -19,9 +19,14 @@ services:
       context: .
       dockerfile: BasketApi/Dockerfile
 
+  discountgrpc:
+    image: discountgrpc
+    build:
+      context: .
+      dockerfile: DiscountGrpc/Dockerfile
+
   distributedcache:
     image: redis
-
 
 # volumes:
 #   postgres_catalog:

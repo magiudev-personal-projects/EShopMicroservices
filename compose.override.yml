@@ -11,7 +11,7 @@ services:
 
     restart: always
     ports:
-        - "5432:5432"
+      - "5432:5432"
     # volumes:
     #   - postgres_catalog:/var/lib/postgresql
 
@@ -37,10 +37,24 @@ services:
 
     # Development
     volumes:
-     - ./https/aspnetapp.pfx:/https/aspnetapp.pfx
-
+      - ./https/aspnetapp.pfx:/https/aspnetapp.pfx
     #  Debug locally
     #  - ~/.vsdbg:/remote_debugger:rw
+
+  basketdb:
+    container_name: basketdb
+    environment:
+      - POSTGRES_DB=BasketDb
+
+      # Development
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_USER=postgres
+
+    restart: always
+    ports:
+      - "5433:5432"
+    # volumes:
+    #   - postgres_basket:/var/lib/postgresql
 
   basketapi:
     container_name: basketapi
@@ -66,26 +80,29 @@ services:
 
     # Development
     volumes:
-     - ./https/aspnetapp.pfx:/https/aspnetapp.pfx
-
+      - ./https/aspnetapp.pfx:/https/aspnetapp.pfx
     #  Debug locally
     #  - ~/.vsdbg:/remote_debugger:rw
 
-  basketdb:
-    container_name: basketdb
+  discountgrpc:
     environment:
-      - POSTGRES_DB=BasketDb
+      - ASPNETCORE_HTTP_PORTS=8080
+      - ASPNETCORE_HTTPS_PORTS=8081
 
       # Development
-      - POSTGRES_PASSWORD=postgres
-      - POSTGRES_USER=postgres
-
-    restart: always
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__Database=Data Source=discountdb
+      - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/aspnetapp.pfx
+      - ASPNETCORE_Kestrel__Certificates__Default__Password=MySecretPassword
     ports:
-        - "5433:5432"
-    # volumes:
-    #   - postgres_basket:/var/lib/postgresql
-  
+      - "6002:8080"
+      - "6062:8081"
+    volumes:
+      - ./https/aspnetapp.pfx:/https/aspnetapp.pfx
+    # TODO: try this config
+    #   - ${APPDATA}/Microsoft/UserSecrets:/home/app/.microsoft/usersecrets:ro
+    #   - ${APPDATA}/ASP.NET/Https:/home/app/.aspnet/https:ro
+
   distributedcache:
     container_name: distributedcache
     restart: always
