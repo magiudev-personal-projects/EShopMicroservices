@@ -16,6 +16,7 @@ public class DiscountService(DiscountContext dbContext, ILogger<DiscountService>
         var coupon = await dbContext.Coupons.FirstOrDefaultAsync(coupon =>
             coupon.ProductName == request.ProductName
         );
+
         if (coupon == null)
             throw new RpcException(
                 new Status(StatusCode.NotFound, $"Coupon {coupon?.ProductName} not found")
@@ -30,12 +31,27 @@ public class DiscountService(DiscountContext dbContext, ILogger<DiscountService>
         return coupon.ToGrpcModel();
     }
 
-    public override Task<CouponModel> CreateDiscount(
+    public override async Task<CouponModel> CreateDiscount(
         InsertCouponRequest request,
         ServerCallContext context
     )
     {
-        return base.CreateDiscount(request, context);
+        var coupon = request.Coupon.ToModel();
+        if (coupon is null)
+            throw new RpcException(
+                new Status(StatusCode.InvalidArgument, "Invalid request object.")
+            );
+
+        dbContext.Coupons.Add(coupon);
+        await dbContext.SaveChangesAsync();
+
+        logger.LogInformation(
+            "Discount is successfully created. ProductName : {ProductName}",
+            coupon.ProductName
+        );
+
+        var couponModel = coupon.ToGrpcModel();
+        return couponModel;
     }
 
     public override Task<CouponModel> UpdateDiscount(
