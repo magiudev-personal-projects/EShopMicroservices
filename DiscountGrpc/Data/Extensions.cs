@@ -1,7 +1,6 @@
-using DiscountGrpc.Data;
 using Microsoft.EntityFrameworkCore;
 
-namespace Discount.Grpc.Data;
+namespace DiscountGrpc.Data;
 
 public static class Extensions
 {
