@@ -15,20 +15,14 @@ public static class Maps
         };
     }
 
-    public static Coupon? ToModel(this CouponModel couponModel)
+    public static Coupon ToModel(this CouponModel couponModel)
     {
-        try
+        return new Coupon
         {
-            return new Coupon
-            {
-                ProductName = couponModel.ProductName,
-                Description = couponModel.Description,
-                Amount = couponModel.Amount,
-            };
-        }
-        catch
-        {
-            return null;
-        }
+            Id = couponModel.Id,
+            ProductName = couponModel.ProductName,
+            Description = couponModel.Description,
+            Amount = couponModel.Amount,
+        };
     }
 }

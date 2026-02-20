@@ -54,12 +54,38 @@ public class DiscountService(DiscountContext dbContext, ILogger<DiscountService>
         return couponModel;
     }
 
-    public override Task<CouponModel> UpdateDiscount(
+    public override async Task<CouponModel> UpdateDiscount(
         InsertCouponRequest request,
         ServerCallContext context
     )
     {
-        return base.UpdateDiscount(request, context);
+        if (request.Coupon == null)
+        {
+            throw new RpcException(
+                new Status(StatusCode.InvalidArgument, "Invalid request object.")
+            );
+        }
+
+        var id = request.Coupon?.Id;
+        var coupon = dbContext.Coupons.Any(coupon => coupon.Id == id);
+
+        if (!coupon)
+            throw new RpcException(
+                new Status(StatusCode.NotFound, $"Coupon with id: {id} not found")
+            );
+
+        var newCoupon = request.Coupon!.ToModel();
+
+        dbContext.Coupons.Update(newCoupon);
+        await dbContext.SaveChangesAsync();
+
+        logger.LogInformation(
+            "Discount is successfully updated. ProductName : {ProductName}",
+            newCoupon.ProductName
+        );
+
+        var couponModel = newCoupon.ToGrpcModel();
+        return couponModel;
     }
 
     public override Task<DeleteDiscountResponse> DeleteDiscount(
