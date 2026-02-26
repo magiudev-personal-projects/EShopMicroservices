@@ -3,6 +3,7 @@ using BasketApi.Data;
 using BasketApi.Models;
 using BuildingBlocks;
 using BuildingBlocks.Behaviours;
+using DiscountGrpc;
 using FluentValidation;
 using HealthChecks.UI.Client;
 using Marten;
@@ -46,6 +47,22 @@ builder.Services.AddStackExchangeRedisCache(options =>
 });
 
 builder.Services.AddProblemDetails();
+
+builder
+    .Services.AddGrpcClient<DiscountProtoService.DiscountProtoServiceClient>(options =>
+    {
+        options.Address = new Uri(builder.Configuration["GrpcSettings:DiscountUrl"]!);
+    })
+    .ConfigurePrimaryHttpMessageHandler(() =>
+    {
+        var handler = new HttpClientHandler
+        {
+            ServerCertificateCustomValidationCallback =
+                HttpClientHandler.DangerousAcceptAnyServerCertificateValidator,
+        };
+
+        return handler;
+    });
 
 var app = builder.Build();
 

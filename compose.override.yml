@@ -68,6 +68,7 @@ services:
       - ConnectionStrings__Redis=distributedcache:6379
       - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/aspnetapp.pfx
       - ASPNETCORE_Kestrel__Certificates__Default__Password=MySecretPassword
+      - GrpcSettings__DiscountUrl=https://discountgrpc:8081
 
     depends_on:
       - basketdb
@@ -85,6 +86,7 @@ services:
     #  - ~/.vsdbg:/remote_debugger:rw
 
   discountgrpc:
+    container_name: discountgrpc
     environment:
       - ASPNETCORE_HTTP_PORTS=8080
       - ASPNETCORE_HTTPS_PORTS=8081
