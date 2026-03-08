@@ -47,7 +47,7 @@
 			"type": "process",
 			"args": [
 				"build",
-				"${workspaceFolder}/OrderingApi/OrderingApi.csproj",
+				"${workspaceFolder}/Ordering/Infrastructure/Infrastructure.csproj",
 			],
 			"problemMatcher": "$msCompile"
 		},

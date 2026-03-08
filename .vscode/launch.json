@@ -31,8 +31,8 @@
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build-ordering",
-            "program": "${workspaceFolder}/OrderingApi/bin/Debug/net10.0/OrderingApi.dll",
-            "cwd": "${workspaceFolder}/OrderingApi"
+            "program": "${workspaceFolder}/Ordering/Infrastructure/bin/Debug/net10.0/Infrastructure.dll",
+            "cwd": "${workspaceFolder}/Ordering/Infrastructure"
         }
     ]
 }
