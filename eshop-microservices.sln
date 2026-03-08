@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BasketApi", "BasketApi\Bask
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiscountGrpc", "DiscountGrpc\DiscountGrpc.csproj", "{01983621-8458-46EB-95A2-FC7667E79E2D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderingApi", "OrderingApi\OrderingApi.csproj", "{AEF8FB41-E489-46D6-899E-DB869DE01961}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -69,6 +71,18 @@ Global
 		{01983621-8458-46EB-95A2-FC7667E79E2D}.Release|x64.Build.0 = Release|Any CPU
 		{01983621-8458-46EB-95A2-FC7667E79E2D}.Release|x86.ActiveCfg = Release|Any CPU
 		{01983621-8458-46EB-95A2-FC7667E79E2D}.Release|x86.Build.0 = Release|Any CPU
+		{AEF8FB41-E489-46D6-899E-DB869DE01961}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AEF8FB41-E489-46D6-899E-DB869DE01961}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AEF8FB41-E489-46D6-899E-DB869DE01961}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{AEF8FB41-E489-46D6-899E-DB869DE01961}.Debug|x64.Build.0 = Debug|Any CPU
+		{AEF8FB41-E489-46D6-899E-DB869DE01961}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{AEF8FB41-E489-46D6-899E-DB869DE01961}.Debug|x86.Build.0 = Debug|Any CPU
+		{AEF8FB41-E489-46D6-899E-DB869DE01961}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AEF8FB41-E489-46D6-899E-DB869DE01961}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AEF8FB41-E489-46D6-899E-DB869DE01961}.Release|x64.ActiveCfg = Release|Any CPU
+		{AEF8FB41-E489-46D6-899E-DB869DE01961}.Release|x64.Build.0 = Release|Any CPU
+		{AEF8FB41-E489-46D6-899E-DB869DE01961}.Release|x86.ActiveCfg = Release|Any CPU
+		{AEF8FB41-E489-46D6-899E-DB869DE01961}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -41,5 +41,15 @@
 			],
 			"problemMatcher": "$msCompile"
 		},
+		{
+			"label": "build-ordering",
+			"command": "dotnet",
+			"type": "process",
+			"args": [
+				"build",
+				"${workspaceFolder}/OrderingApi/OrderingApi.csproj",
+			],
+			"problemMatcher": "$msCompile"
+		},
 	]
 }

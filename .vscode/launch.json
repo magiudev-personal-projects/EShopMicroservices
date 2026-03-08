@@ -25,6 +25,14 @@
             "preLaunchTask": "build-discount",
             "program": "${workspaceFolder}/DiscountGrpc/bin/Debug/net10.0/DiscountGrpc.dll",
             "cwd": "${workspaceFolder}/DiscountGrpc"
+        },
+        {
+            "name": "Ordering",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build-ordering",
+            "program": "${workspaceFolder}/OrderingApi/bin/Debug/net10.0/OrderingApi.dll",
+            "cwd": "${workspaceFolder}/OrderingApi"
         }
     ]
 }
