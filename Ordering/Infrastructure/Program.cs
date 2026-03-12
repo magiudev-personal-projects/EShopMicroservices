@@ -11,9 +11,13 @@ builder.AddServices();
 
 var app = builder.Build();
 
+app.UseApiServices();
+
 if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
+
+    await app.InitialiseDatabaseAsync();
 }
 
 app.UseHttpsRedirection();

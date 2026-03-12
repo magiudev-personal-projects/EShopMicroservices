@@ -17,4 +17,9 @@ public static class DependencyInjection
         );
         return app;
     }
+
+    public static WebApplication UseApiServices(this WebApplication app)
+    {
+        return app;
+    }
 }
