@@ -1,11 +1,11 @@
-using Microsoft.Extensions.DependencyInjection;
+using Microsoft.AspNetCore.Builder;
 
 namespace Ordering.Application;
 
 public static class DependencyInjection
 {
-    public static IServiceCollection AddServices(this IServiceCollection services)
+    public static WebApplicationBuilder AddServices(this WebApplicationBuilder app)
     {
-        return services;
+        return app;
     }
 }
