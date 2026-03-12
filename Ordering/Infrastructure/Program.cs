@@ -1,12 +1,13 @@
+using Ordering.Infrastructure;
+using Ordering.Infrastructure.DbSeed;
 using Application = Ordering.Application.DependencyInjection;
-using Infrastructure = Ordering.Infrastructure.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddOpenApi();
 
 Application.AddServices(builder.Services);
-Infrastructure.AddServices(builder);
+builder.AddServices();
 
 var app = builder.Build();
 

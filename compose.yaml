@@ -25,6 +25,9 @@ services:
       context: .
       dockerfile: DiscountGrpc/Dockerfile
 
+  orderdb:
+    image: mcr.microsoft.com/mssql/server
+
   distributedcache:
     image: redis
 
