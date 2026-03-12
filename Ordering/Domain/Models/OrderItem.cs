@@ -5,6 +5,8 @@ namespace Ordering.Domain.Models;
 
 public class OrderItem : Entity<OrderItemId>
 {
+    private OrderItem() { }
+
     internal OrderItem(OrderId orderId, ProductId productId, int quantity, decimal price)
     {
         Id = OrderItemId.Of(Guid.NewGuid());
