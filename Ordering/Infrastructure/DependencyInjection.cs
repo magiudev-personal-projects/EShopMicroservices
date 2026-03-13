@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 
+// using Ordering.Infrastructure.Interceptors;
+
 namespace Ordering.Infrastructure;
 
 public static class DependencyInjection
@@ -13,8 +15,10 @@ public static class DependencyInjection
                 "Connection string 'DefaultConnection' not found."
             );
         app.Services.AddDbContext<ApplicationDbContext>(options =>
-            options.UseSqlServer(connectionString)
-        );
+        {
+            // options.AddInterceptors(new AuditableEntityInterceptor());
+            options.UseSqlServer(connectionString);
+        });
         return app;
     }
 
