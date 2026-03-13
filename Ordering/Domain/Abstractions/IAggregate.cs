@@ -6,5 +6,5 @@ public interface IAggregate : IEntity
 {
     IReadOnlyList<IDomainEvent> DomainEvents { get; }
 
-    IDomainEvent[] GetDomainEvents();
+    IDomainEvent[] ClearDomainEvents();
 }

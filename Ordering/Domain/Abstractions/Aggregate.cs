@@ -10,7 +10,7 @@ public abstract class Aggregate<T> : Entity<T>, IAggregate<T>
         _domainEvents.Add(domainEvents);
     }
 
-    public IDomainEvent[] GetDomainEvents()
+    public IDomainEvent[] ClearDomainEvents()
     {
         throw new NotImplementedException();
     }
