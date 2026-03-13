@@ -4,7 +4,7 @@ using Ordering.Domain.Enums;
 using Ordering.Domain.Models;
 using Ordering.Domain.ValueObjects;
 
-namespace Ordering.Infrastructure.Data.Configurations;
+namespace Ordering.Infrastructure.Configurations;
 
 public class OrderConfiguration : IEntityTypeConfiguration<Order>
 {
