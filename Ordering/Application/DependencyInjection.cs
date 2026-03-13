@@ -1,11 +1,16 @@
+using System.Reflection;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Ordering.Application;
 
 public static class DependencyInjection
 {
-    public static WebApplicationBuilder AddServices(this WebApplicationBuilder app)
+    public static IServiceCollection AddServices(this IServiceCollection services)
     {
-        return app;
+        services.AddMediatR(cfg =>
+            cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly())
+        );
+        return services;
     }
 }

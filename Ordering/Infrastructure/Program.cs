@@ -5,7 +5,7 @@ using Application = Ordering.Application.DependencyInjection;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddOpenApi();
-Application.AddServices(builder);
+Application.AddServices(builder.Services);
 
 builder.AddServices();
 

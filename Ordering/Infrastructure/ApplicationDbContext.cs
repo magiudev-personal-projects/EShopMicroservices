@@ -1,7 +1,6 @@
 using System.Reflection;
 using Microsoft.EntityFrameworkCore;
 using Ordering.Domain.Models;
-using Ordering.Infrastructure.Interceptors;
 
 namespace Ordering.Infrastructure;
 
@@ -20,7 +19,4 @@ public class ApplicationDbContext : DbContext
         builder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
         base.OnModelCreating(builder);
     }
-
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) =>
-        optionsBuilder.AddInterceptors(new AuditableEntityInterceptor());
 }

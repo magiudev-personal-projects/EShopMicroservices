@@ -12,6 +12,10 @@ public abstract class Aggregate<T> : Entity<T>, IAggregate<T>
 
     public IDomainEvent[] ClearDomainEvents()
     {
-        throw new NotImplementedException();
+        IDomainEvent[] dequeuedEvents = _domainEvents.ToArray();
+
+        _domainEvents.Clear();
+
+        return dequeuedEvents;
     }
 }
