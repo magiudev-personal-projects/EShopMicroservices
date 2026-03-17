@@ -1,5 +1,4 @@
 using FluentValidation;
-using Ordering.Application.Features.CreateOrder;
 
 public class CreateOrderCommandValidator : AbstractValidator<CreateOrderCommand>
 {
