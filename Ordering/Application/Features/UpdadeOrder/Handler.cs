@@ -5,7 +5,7 @@ using Ordering.Application.Exceptions;
 using Ordering.Domain.Models;
 using Ordering.Domain.ValueObjects;
 
-namespace Ordering.Application.Orders.Commands.UpdateOrder;
+namespace Ordering.Application.Commands.UpdateOrder;
 
 public class UpdateOrderHandler(IApplicationDbContext dbContext)
     : ICommandHandler<UpdateOrderCommand, UpdateOrderResult>
