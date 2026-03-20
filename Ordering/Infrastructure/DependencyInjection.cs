@@ -1,3 +1,4 @@
+using BuildingBlocks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 using Ordering.Application.Data;
@@ -8,18 +9,18 @@ namespace Ordering.Infrastructure;
 
 public static class DependencyInjection
 {
-    public static WebApplicationBuilder AddApiServices(this WebApplicationBuilder app)
+    public static WebApplicationBuilder AddApiServices(this WebApplicationBuilder builder)
     {
-        var configuration = app.Configuration;
+        var configuration = builder.Configuration;
         var connectionString =
             configuration.GetConnectionString("DefaultConnection")
             ?? throw new InvalidOperationException(
                 "Connection string 'DefaultConnection' not found."
             );
 
-        app.Services.AddScoped<ISaveChangesInterceptor, AuditableEntityInterceptor>();
-        app.Services.AddScoped<ISaveChangesInterceptor, DispatchDomainEventsInterceptor>();
-        app.Services.AddDbContext<ApplicationDbContext>(
+        builder.Services.AddScoped<ISaveChangesInterceptor, AuditableEntityInterceptor>();
+        builder.Services.AddScoped<ISaveChangesInterceptor, DispatchDomainEventsInterceptor>();
+        builder.Services.AddDbContext<ApplicationDbContext>(
             (sp, options) =>
             {
                 options.AddInterceptors(sp.GetServices<ISaveChangesInterceptor>());
@@ -27,13 +28,15 @@ public static class DependencyInjection
             }
         );
 
-        app.Services.AddScoped<IApplicationDbContext, ApplicationDbContext>();
-        return app;
+        builder.Services.AddScoped<IApplicationDbContext, ApplicationDbContext>();
+        builder.Services.AddExceptionHandler<ExceptionHandler>();
+        return builder;
     }
 
     public static WebApplication UseApiServices(this WebApplication app)
     {
         app.AddRoutes();
+        app.UseExceptionHandler(options => { });
         return app;
     }
 }
