@@ -13,7 +13,7 @@ public record Response(IEnumerable<OrderDto> Orders);
 
 public static class Router
 {
-    public static void AddRoutes(IEndpointRouteBuilder app)
+    public static void AddRoutes(this IEndpointRouteBuilder app)
     {
         app.MapGet(
                 "/orders/{orderName}",
