@@ -1,4 +1,6 @@
 using BuildingBlocks;
+using HealthChecks.UI.Client;
+using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 using Ordering.Application.Data;
@@ -30,6 +32,7 @@ public static class DependencyInjection
 
         builder.Services.AddScoped<IApplicationDbContext, ApplicationDbContext>();
         builder.Services.AddExceptionHandler<ExceptionHandler>();
+        builder.Services.AddHealthChecks().AddSqlServer(connectionString);
         return builder;
     }
 
@@ -37,6 +40,10 @@ public static class DependencyInjection
     {
         app.AddRoutes();
         app.UseExceptionHandler(options => { });
+        app.UseHealthChecks(
+            "/health",
+            new HealthCheckOptions { ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse }
+        );
         return app;
     }
 }
