@@ -12,7 +12,7 @@ public record Response(bool IsSuccess);
 
 public static class Router
 {
-    public static void AddRoutes(this IEndpointRouteBuilder app)
+    public static void AddRoute(this IEndpointRouteBuilder app)
     {
         app.MapDelete(
                 "/orders/{id}",

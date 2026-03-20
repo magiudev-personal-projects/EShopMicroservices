@@ -14,7 +14,7 @@ public record Response(PaginatedResult<OrderDto> Orders);
 
 public static class Router
 {
-    public static void AddRoutes(this IEndpointRouteBuilder app)
+    public static void AddRoute(this IEndpointRouteBuilder app)
     {
         app.MapGet(
                 "/orders",

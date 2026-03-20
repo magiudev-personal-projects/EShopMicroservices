@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 using Ordering.Application.Data;
 using Ordering.Infrastructure.Interceptors;
+using Ordering.Infrastructure.Routers;
 
 namespace Ordering.Infrastructure;
 
@@ -32,6 +33,7 @@ public static class DependencyInjection
 
     public static WebApplication UseApiServices(this WebApplication app)
     {
+        app.AddRoutes();
         return app;
     }
 }
