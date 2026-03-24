@@ -3,6 +3,7 @@ using BasketApi.Data;
 using BasketApi.Models;
 using BuildingBlocks;
 using BuildingBlocks.Behaviours;
+using BuildingBlocks.Messaging.MassTransit;
 using DiscountGrpc;
 using FluentValidation;
 using HealthChecks.UI.Client;
@@ -63,6 +64,8 @@ builder
 
         return handler;
     });
+
+builder.Services.AddMessageBroker(builder.Configuration);
 
 var app = builder.Build();
 

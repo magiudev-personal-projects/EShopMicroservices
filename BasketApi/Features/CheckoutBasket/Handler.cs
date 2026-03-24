@@ -1,11 +1,10 @@
 namespace BasketApi.Features.CheckoutBasket;
 
 using BasketApi.Data;
+using MassTransit;
 
-public class CheckoutBasketCommandHandler(
-    IRepository repository
-// , IPublishEndpoint publishEndpoint
-) : ICommandHandler<Command, Result>
+public class CheckoutBasketCommandHandler(IRepository repository, IPublishEndpoint publishEndpoint)
+    : ICommandHandler<Command, Result>
 {
     public async Task<Result> Handle(Command command, CancellationToken cancellationToken)
     {
@@ -18,10 +17,10 @@ public class CheckoutBasketCommandHandler(
         if (basket == null)
             return new Result(false);
 
-        // var eventMessage = command.checkout.Adapt<BasketCheckoutEvent>();
-        // eventMessage.TotalPrice = basket.TotalPrice;
+        var eventMessage = Maps.FromCommandToEvent(command);
+        eventMessage.TotalPrice = basket.TotalPrice;
 
-        // await publishEndpoint.Publish(eventMessage, cancellationToken);
+        await publishEndpoint.Publish(eventMessage, cancellationToken);
 
         await repository.DeleteBasket(command.checkout.UserName, cancellationToken);
 
