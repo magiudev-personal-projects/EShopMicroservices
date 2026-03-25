@@ -1,6 +1,7 @@
 using BuildingBlocks.CQRS;
 using Microsoft.EntityFrameworkCore;
 using Ordering.Application.Data;
+using Ordering.Application.Maps;
 
 namespace Ordering.Application.Features.GetOrderByUsername;
 
@@ -22,6 +23,6 @@ public class GetOrdersByNameHandler(IApplicationDbContext dbContext)
             .OrderBy(o => o.OrderName.Value)
             .ToListAsync(cancellationToken);
 
-        return new GetOrdersByNameResult(orders.ToOrderDtoList());
+        return new GetOrdersByNameResult(orders.ToDto());
     }
 }

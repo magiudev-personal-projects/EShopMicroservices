@@ -1,6 +1,7 @@
 using BuildingBlocks.CQRS;
 using Microsoft.EntityFrameworkCore;
 using Ordering.Application.Data;
+using Ordering.Application.Maps;
 using Ordering.Domain.ValueObjects;
 
 namespace Ordering.Application.Features.GetOrdersByCustomerId;
@@ -23,6 +24,6 @@ public class GetOrdersByCustomerHandler(IApplicationDbContext dbContext)
             .OrderBy(o => o.OrderName.Value)
             .ToListAsync(cancellationToken);
 
-        return new GetOrdersByCustomerResult(orders.ToOrderDtoList());
+        return new GetOrdersByCustomerResult(orders.ToDto());
     }
 }

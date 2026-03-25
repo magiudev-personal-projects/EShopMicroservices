@@ -1,11 +1,11 @@
 using Ordering.Application.Dtos;
 using Ordering.Domain.Models;
 
-namespace Ordering.Application.Features.GetOrdersByCustomerId;
+namespace Ordering.Application.Maps;
 
-public static class OrderExtensions
+public static class Maps
 {
-    public static IEnumerable<OrderDto> ToOrderDtoList(this IEnumerable<Order> orders)
+    public static IEnumerable<OrderDto> ToDto(this IEnumerable<Order> orders)
     {
         return orders.Select(order => new OrderDto(
             Id: order.Id.Value,
