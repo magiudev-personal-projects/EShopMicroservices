@@ -31,5 +31,8 @@ services:
   distributedcache:
     image: redis
 
+  messagebroker:
+    image: rabbitmq:management
+
 # volumes:
 #   postgres_catalog:

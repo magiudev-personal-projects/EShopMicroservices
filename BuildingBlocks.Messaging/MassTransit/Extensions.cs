@@ -24,7 +24,7 @@ public static class Extentions
                 (context, configurator) =>
                 {
                     configurator.Host(
-                        new Uri(configuration["MessageBroker:Host"]!),
+                        new Uri(configuration["MessageBroker:HostName"]!),
                         host =>
                         {
                             host.Username(configuration["MessageBroker:UserName"]);
