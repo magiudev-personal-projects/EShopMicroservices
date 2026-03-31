@@ -69,10 +69,15 @@ services:
       - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/aspnetapp.pfx
       - ASPNETCORE_Kestrel__Certificates__Default__Password=MySecretPassword
       - GrpcSettings__DiscountUrl=https://discountgrpc:8081
+      - MessageBroker__HostName=amqp://ecommerce-mq:5672
+      - MessageBroker__UserName=guest
+      - MessageBroker__Password=guest
 
     depends_on:
       - basketdb
       - distributedcache
+      - discountgrpc
+      - messagebroker
     ports:
       - "6001:8080"
       - "6061:8081"
@@ -113,6 +118,29 @@ services:
     restart: always
     ports:
       - "1433:1433"
+  
+  orderapi:
+    container_name: orderapi
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_HTTP_PORTS=8080
+      - ASPNETCORE_HTTPS_PORTS=8081
+      - ConnectionStrings__DefaultConnection=Server=orderdb;Database=OrderDb;User Id=sa;Password=password123!;TrustServerCertificate=True
+      - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/aspnetapp.pfx
+      - ASPNETCORE_Kestrel__Certificates__Default__Password=MySecretPassword
+      - MessageBroker__HostName=amqp://ecommerce-mq:5672
+      - MessageBroker__UserName=guest
+      - MessageBroker__Password=guest
+      - FeatureManagement__OrderFullfilment=false
+    depends_on:
+      - messagebroker
+      - orderdb
+
+    ports:
+      - "6003:8080"
+      - "6063:8081"
+    volumes:
+      - ./https/aspnetapp.pfx:/https/aspnetapp.pfx
       
   distributedcache:
     container_name: distributedcache

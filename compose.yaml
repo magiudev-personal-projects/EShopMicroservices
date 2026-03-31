@@ -28,6 +28,12 @@ services:
   orderdb:
     image: mcr.microsoft.com/mssql/server
 
+  orderapi:
+    image: orderapi
+    build:
+      context: .
+      dockerfile: Ordering/Infrastructure/Dockerfile
+
   distributedcache:
     image: redis
 
