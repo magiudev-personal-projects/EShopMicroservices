@@ -33,6 +33,14 @@
             "preLaunchTask": "build-ordering",
             "program": "${workspaceFolder}/Ordering/Infrastructure/bin/Debug/net10.0/Infrastructure.dll",
             "cwd": "${workspaceFolder}/Ordering/Infrastructure"
+        },
+        {
+            "name": "Gateway",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build-gateway",
+            "program": "${workspaceFolder}/YarpApiGateway/bin/Debug/net10.0/YarpApiGateway.dll",
+            "cwd": "${workspaceFolder}/YarpApiGateway"
         }
     ]
 }
